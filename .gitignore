@@ -3,6 +3,7 @@
 ### added to github .gitignore template ###
 
 data
+/models
 
 ### template ###
 # Byte-compiled / optimized / DLL files
