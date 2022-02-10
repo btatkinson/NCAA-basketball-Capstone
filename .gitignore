@@ -1,7 +1,7 @@
 
 
 ### added to github .gitignore template ###
-.DS_Store
+**/.DS_Store
 data
 /models
 .DS_Store
