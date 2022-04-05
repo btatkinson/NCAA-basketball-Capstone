@@ -43,5 +43,5 @@ if page == "Page 1":
     st.map(filtered_data)
 
 if page == "Page 2":
-    st.title('PAGE 2 TITLE HEADER")
+    st.title('PAGE 2 TITLE HEADER')
     st.markdown('TEST TEST1 TEST2 TEST3')
