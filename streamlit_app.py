@@ -1,7 +1,12 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+from st_btn_select import st_btn_select
 
+selection = st_btn_select(('option 1', 'option 2', 'option 3'))
+st.write('selection')
+
+"""
 # Create a page dropdown 
 page = st.sidebar.selectbox("Choose your page", ["Page 1", "Page 2", "Page 3"]) 
 
@@ -39,4 +44,4 @@ if page == "Page 1":
     filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
 
     st.subheader('Map of all pickups at %s:00' % hour_to_filter)
-    st.map(filtered_data)
+    st.map(filtered_data)"""
