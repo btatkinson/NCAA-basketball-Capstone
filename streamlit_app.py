@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import requests
 
 # Create a page dropdown 
 page = st.sidebar.selectbox("Choose your page", ["Page 1", "Page 2", "Page 3"]) 
@@ -45,5 +46,6 @@ elif page == "Page 2":
 
     #url = 'https://drive.google.com/file/d/1-9IdrqHE420_xqg7ngPW1Gd-S9WAMyAk/view?usp=sharing'
     #path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
-    df = pd.read_csv('https://drive.google.com/file/d/1-9IdrqHE420_xqg7ngPW1Gd-S9WAMyAk/view?usp=sharing')
+    r = requests.get('https://drive.google.com/file/d/1-9IdrqHE420_xqg7ngPW1Gd-S9WAMyAk/view?usp=sharing')
+    df = pd.read_csv(r.content)
     st.write(df)
