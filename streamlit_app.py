@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 # Create a page dropdown 
-page = st.selectbox("Choose your page", ["Page 1", "Page 2", "Page 3"]) 
+page = st.sidebar.selectbox("Choose your page", ["Page 1", "Page 2", "Page 3"]) 
 
 if page == "Page 1":
     # Display details of page 1
