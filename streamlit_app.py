@@ -41,11 +41,3 @@ if page == "Page 1":
 
     st.subheader('Map of all pickups at %s:00' % hour_to_filter)
     st.map(filtered_data)
-
-elif page == "Page 2":
-
-    #url = 'https://drive.google.com/file/d/1-9IdrqHE420_xqg7ngPW1Gd-S9WAMyAk/view?usp=sharing'
-    #path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
-    r = requests.get('https://drive.google.com/file/d/1-9IdrqHE420_xqg7ngPW1Gd-S9WAMyAk/view?usp=sharing')
-    df = pd.read_csv(r.content.decode('utf-8'))
-    st.write(df)
