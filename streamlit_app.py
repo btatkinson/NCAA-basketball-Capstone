@@ -43,7 +43,7 @@ if page == "Page 1":
 
 elif page == "Page 2":
 
-    url = 'https://drive.google.com/file/d/1-9IdrqHE420_xqg7ngPW1Gd-S9WAMyAk/view?usp=sharing'
-    path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
-    df = pd.read_csv(path)
+    #url = 'https://drive.google.com/file/d/1-9IdrqHE420_xqg7ngPW1Gd-S9WAMyAk/view?usp=sharing'
+    #path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
+    df = pd.read_csv('https://drive.google.com/file/d/1-9IdrqHE420_xqg7ngPW1Gd-S9WAMyAk/view?usp=sharing')
     st.write(df)
