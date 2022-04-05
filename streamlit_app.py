@@ -46,5 +46,5 @@ if page == "Page 2":
     URL = 'https://drive.google.com/file/d/1m0mAGzpeMR0W-BDL5BtKrs0HOZsPIAbX/view?usp=sharing'
     path = 'https://drive.google.com/uc?export=download&id='+URL.split('/')[-2]
     #df = pd.read_pickle(path)
-    df = pd.read_csv(path)
+    df = pd.read_csv(path, encoding = 'utf-8')
     df.head()
