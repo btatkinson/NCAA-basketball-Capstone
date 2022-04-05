@@ -2,6 +2,15 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
+# Create a page dropdown 
+page = st.selectbox("Choose your page", ["Page 1", "Page 2", "Page 3"]) 
+
+if page == "Page 1":
+    # Display details of page 1
+
+elif page == "Page 2":
+    # Display details of page 2
+
 st.title('Uber pickups in NYC')
 
 DATE_COLUMN = 'date/time'
@@ -34,3 +43,6 @@ filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
 
 st.subheader('Map of all pickups at %s:00' % hour_to_filter)
 st.map(filtered_data)
+
+elif page == "Page 3":
+    # Display details of page 3
