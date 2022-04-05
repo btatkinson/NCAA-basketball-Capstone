@@ -46,6 +46,6 @@ elif page == "Page 2":
 
     #url = 'https://drive.google.com/file/d/1-9IdrqHE420_xqg7ngPW1Gd-S9WAMyAk/view?usp=sharing'
     #path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
-    r = requests.get('https://drive.google.com/file/d/1-9IdrqHE420_xqg7ngPW1Gd-S9WAMyAk')
+    r = requests.get('https://drive.google.com/file/d/1-9IdrqHE420_xqg7ngPW1Gd-S9WAMyAk/view?usp=sharing')
     df = pd.read_csv(r.content.decode('utf-8'))
     st.write(df)
