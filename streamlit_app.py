@@ -41,3 +41,6 @@ if page == "Page 1":
 
     st.subheader('Map of all pickups at %s:00' % hour_to_filter)
     st.map(filtered_data)
+
+if page == "Page 2":
+    st.markdown('TEST TEST1 TEST2 TEST3')
