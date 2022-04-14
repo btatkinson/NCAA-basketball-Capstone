@@ -37,4 +37,4 @@ def app():
         y='away',
     ).properties(width=1000)
 
-    st.altair_chart(band+home_line+away_line, True)
+    st.altair_chart(band+home_line+away_line)
