@@ -25,16 +25,16 @@ def app():
         x='time',
         y='home',
         y2='away'
-    ).properties(width=1000)
+    ).properties(width=500)
 
     home_line = alt.Chart(score).mark_line(strokeWidth=3,color=alt.HexColor(home_color)).encode(
         x='time',
         y='home',
-    ).properties(width=1000)
+    ).properties(width=500)
 
     away_line = alt.Chart(score).mark_line(strokeWidth=3,color=alt.HexColor(away_color)).encode(
         x='time',
         y='away',
-    ).properties(width=1000)
+    ).properties(width=500)
 
     st.altair_chart(band+home_line+away_line)
