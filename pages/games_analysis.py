@@ -5,7 +5,7 @@ import requests
 
 def app():
     df = pd.read_csv('src/test_games.csv')
-    
-    option = st.selectbox(
-     'Please choose a game...',
-     df['label'].unqiue())
+    st.dataframe(df)
+    #option = st.selectbox(
+     #'Please choose a game...',
+     #df['label'].unqiue())
