@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import requests
 
-@st.cache
+#@st.cache
 def app():
     st.title('Uber pickups in NYC')
 
