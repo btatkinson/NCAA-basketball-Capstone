@@ -20,6 +20,9 @@ def app():
     score['time'] = abs(2400 - score['time'])
     score = score.fillna(method='ffill')
     
+    score['score_diff'] = score['home'] - score['away']
+    score['leading_team'] = np.where(score['score_diff'] > 0,'home','away')
+    
     home_color = score['home_color'].iloc[0]
     away_color = score['away_color'].iloc[0] 
     
@@ -94,7 +97,7 @@ def app():
     #score difference bar/line
     score_diff_line = alt.Chart(score_id_all).mark_bar(strokeWidth=3).encode(
         x=alt.X('time:Q',scale=alt.Scale(domainMax=2400,domainMin=0,clamp=True)),
-        y='score_diff:Q',
+        y='score_diff',
         color = alt.condition("datum.score_diff > 0", alt.value(home_color), alt.value(away_color))
     ).properties(width=1000,height=100)
 
