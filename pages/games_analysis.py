@@ -110,7 +110,7 @@ def app():
         y='home',
         y2='away',
         color = alt.value('lightblue')
-    ).properties(width=650)
+    ).properties(width=650).add_selection(sel)
 
     home_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(h_color)).encode(
         x='time',
