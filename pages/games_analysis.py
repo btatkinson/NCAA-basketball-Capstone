@@ -5,6 +5,7 @@ import altair as alt
 import requests
 
 def app():
+    
     df = pd.read_csv('src/test_games.csv')
     
     option = st.selectbox(
@@ -135,4 +136,4 @@ def app():
     
     final_chart = alt.vconcat((band+home_line+away_line),(h_bar&score_diff_line&a_bar)).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
 
-    st.altair_chart(a_bar)
+    st.altair_chart(band+home_line+away_line)
