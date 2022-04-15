@@ -138,7 +138,7 @@ def app():
         color=colorbar,
         opacity=opacity_cond,
         tooltip=['lineup','point_diff_stint','point_diff','time_played']
-    ).properties(height=50,width=650).add_selection(sel)
+    ).properties(height=50,width=650).add_selection(sel).transform_filter(sel)
     
     final_chart = alt.vconcat((band+home_line+away_line),(h_bar&score_diff_line&a_bar)).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     st.altair_chart(final_chart)
