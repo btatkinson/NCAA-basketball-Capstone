@@ -48,9 +48,6 @@ def app():
     
     home = ha[ha['team_market'] == ha['team_market'].iloc[0]]
     away = ha[ha['team_market'] == ha['team_market'].iloc[-1]]
-
-    home_color = ha['color'].iloc[0]
-    away_color = ha['color'].iloc[-1]
     
     home['change'] = home['lineup'] == home['lineup'].shift(1)
     away['change'] = away['lineup'] == away['lineup'].shift(1)
@@ -80,6 +77,9 @@ def app():
     score_id = score_id.merge(a_change[['home_points','away_points','time_old','away_id']],left_on=['home','away','time'], \
                         right_on=['home_points','away_points','time_old'],how='left').fillna(method='ffill')
     
+    h_color = h_change['color'].iloc[0]
+    a_color = a_change['color'].iloc[0]
+    
     #interactivity 
     sel = alt.selection_single(on='mouseover')
     colorbar = alt.Color('point_diff:Q',scale=alt.Scale(scheme='viridis'))
@@ -105,12 +105,12 @@ def app():
         color = alt.value('lightblue')
     ).properties(width=1000)
 
-    home_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(home_color)).encode(
+    home_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(h_color)).encode(
         x='time',
         y='home'
     ).properties(width=1000)
 
-    away_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(away_color)).encode(
+    away_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(a_color)).encode(
         x='time',
         y='away'
     ).properties(width=1000)
