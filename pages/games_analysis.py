@@ -88,7 +88,7 @@ def app():
     a_color = a_change['color'].iloc[0]
     
     #interactivity 
-    sel = alt.selection_single(on='mouseover')
+    sel = alt.selection_multi(on='mouseover')
     colorbar = alt.Color('point_diff:Q',scale=alt.Scale(scheme='viridis'))
     opacity_cond = alt.condition(sel,alt.value(1),alt.value(.4))
     
@@ -110,7 +110,7 @@ def app():
         y='home',
         y2='away',
         color = alt.value('lightblue')
-    ).properties(width=650).add_selection(sel)
+    ).properties(width=650)
 
     home_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(h_color)).encode(
         x='time',
