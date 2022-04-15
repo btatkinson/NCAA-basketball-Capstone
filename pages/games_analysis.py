@@ -139,5 +139,5 @@ def app():
     
     final_chart = alt.vconcat((band+home_line+away_line),(h_bar&score_diff_line&a_bar)).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     #alt.vconcat((band+home_line+away_line),h_bar&a_bar).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
-    st.dataframe(score_id_all)
+    st.dataframe(a_change)
     st.altair_chart(score_diff_line)
