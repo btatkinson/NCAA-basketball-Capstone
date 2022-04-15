@@ -88,7 +88,7 @@ def app():
     a_color = a_change['color'].iloc[0]
     
     #interactivity 
-    sel = alt.selection_multi(on='mouseover', fields = ['time'])
+    sel = alt.selection_multi(on='mouseover', encodings = ['time'])
     colorbar = alt.Color('point_diff:Q',scale=alt.Scale(scheme='viridis'))
     opacity_cond = alt.condition(sel,alt.value(1),alt.value(.4))
     
