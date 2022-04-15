@@ -94,8 +94,8 @@ def app():
     #score difference bar/line
     score_diff_line = alt.Chart(score_id_all).mark_bar(strokeWidth=3).encode(
         x=alt.X('time:Q',scale=alt.Scale(domainMax=2400,domainMin=0,clamp=True)),
-        y='score_diff',
-        #color = alt.condition("datum.score_diff > 0", alt.value(home_color), alt.value(away_color))
+        y='score_diff:Q',
+        color = alt.condition("datum.score_diff > 0", alt.value(home_color), alt.value(away_color))
     ).properties(width=1000,height=100)
 
     #score line plot
