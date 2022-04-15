@@ -102,7 +102,7 @@ def app():
         x=alt.X('time:Q',scale=alt.Scale(domainMax=2400,domainMin=0,clamp=True)),
         y='score_diff',
         color = alt.condition("datum.score_diff > 0", alt.value(home_color), alt.value(away_color))
-    ).properties(width=700,height=100)
+    ).properties(width=650,height=65)
 
     #score line plot
     band = alt.Chart(score_id).mark_area(opacity=.5).encode(
@@ -110,17 +110,17 @@ def app():
         y='home',
         y2='away',
         color = alt.value('lightblue')
-    ).properties(width=700)
+    ).properties(width=650)
 
     home_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(h_color)).encode(
         x='time',
         y='home'
-    ).properties(width=700)
+    ).properties(width=650)
 
     away_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(a_color)).encode(
         x='time',
         y='away'
-    ).properties(width=700)
+    ).properties(width=650)
     
     #home bar chart
     h_bar = alt.Chart(h_change).mark_bar(size=40).encode(
@@ -129,7 +129,7 @@ def app():
         color=colorbar,
         opacity=opacity_cond,
         tooltip=['lineup','point_diff_stint','point_diff','time_played']
-    ).properties(height=50,width=700).add_selection(sel)
+    ).properties(height=50,width=650).add_selection(sel)
     
     #away bar chart
     a_bar = alt.Chart(a_change).mark_bar(size=40).encode(
@@ -138,7 +138,7 @@ def app():
         color=colorbar,
         opacity=opacity_cond,
         tooltip=['lineup','point_diff_stint','point_diff','time_played']
-    ).properties(height=50,width=700).add_selection(sel)
+    ).properties(height=50,width=650).add_selection(sel)
     
     final_chart = alt.vconcat((band+home_line+away_line),(h_bar&score_diff_line&a_bar)).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     st.altair_chart(final_chart)
