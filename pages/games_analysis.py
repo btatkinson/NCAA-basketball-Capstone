@@ -89,7 +89,7 @@ def app():
     
     #interactivity 
     sel = alt.selection_single(on='mouseover')
-    brush = alt.selection(type='interval', encodings=['time'])
+    #brush = alt.selection(type='interval', encodings=['time'])
     colorbar = alt.Color('point_diff:Q',scale=alt.Scale(scheme='viridis'))
     opacity_cond = alt.condition(sel,alt.value(1),alt.value(.4))
     
@@ -142,4 +142,5 @@ def app():
     ).properties(height=50,width=650).add_selection(sel, brush)
     
     final_chart = alt.vconcat((band+home_line+away_line),(h_bar&score_diff_line&a_bar)).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
+    st.dataframe(a_change)
     st.altair_chart(final_chart)
