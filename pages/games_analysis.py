@@ -129,7 +129,7 @@ def app():
         color=colorbar,
         opacity=opacity_cond,
         tooltip=['lineup','point_diff_stint','point_diff','time_played']
-    ).properties(height=50,width=650).add_selection(sel)
+    ).properties(height=50,width=650).add_selection(sel).encode(color = opacity_cond)
     
     #away bar chart
     a_bar = alt.Chart(a_change).mark_bar(size=40).encode(
@@ -138,7 +138,7 @@ def app():
         color=colorbar,
         opacity=opacity_cond,
         tooltip=['lineup','point_diff_stint','point_diff','time_played']
-    ).properties(height=50,width=650).add_selection(sel)
+    ).properties(height=50,width=650).add_selection(sel).encode(color = opacity_cond)
     
     final_chart = alt.vconcat((band+home_line+away_line),(h_bar&score_diff_line&a_bar)).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     st.altair_chart(final_chart)
