@@ -133,4 +133,4 @@ def app():
         tooltip=['lineup','point_diff_stint','point_diff','time_played']
     ).properties(height=50,width=1000).add_selection(sel)
 
-    st.altair_chart(alt.vconcat((band+home_line+away_line),(h_bar&score_diff_line&a_bar))#.configure_axis(gridOpacity=.5).configure_view(strokeWidth=0))
+    st.altair_chart(alt.vconcat((band+home_line+away_line),(h_bar&score_diff_line&a_bar)))#.configure_axis(gridOpacity=.5).configure_view(strokeWidth=0))
