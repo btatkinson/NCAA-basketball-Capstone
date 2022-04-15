@@ -70,6 +70,9 @@ def app():
     
     h_change['lineup_sorted'] = h_change['lineup'].apply(lambda x: ', '.join(sorted(x.split(', '))))
     
+    h_change['time_played'] = (h_change['to'] - h_change['from']) / 60
+    a_change['time_played'] = (a_change['to'] - a_change['from']) / 60
+    
     h_change['home_id'] = list(range(len(h_change)))
     h_change['time_old'] = abs(2400 - h_change['time'])
 
@@ -134,10 +137,10 @@ def app():
         x2 = 'to',
         color=colorbar,
         opacity=opacity_cond,
-        #tooltip=['lineup','point_diff_stint','point_diff','time_played']
+        tooltip=['lineup','point_diff_stint','point_diff','time_played']
     ).properties(height=50,width=1000).add_selection(sel)
     
     final_chart = alt.vconcat((band+home_line+away_line),(h_bar&score_diff_line&a_bar)).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     #alt.vconcat((band+home_line+away_line),h_bar&a_bar).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     st.dataframe(a_change)
-    st.altair_chart(score_diff_line)
+    st.altair_chart(a_bar)
