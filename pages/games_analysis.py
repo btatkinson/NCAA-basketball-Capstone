@@ -88,7 +88,7 @@ def app():
     #more preprocessing
     all_times = pd.DataFrame(list(range(2401)),columns=['time'])
     score_id_all = all_times.merge(score_id,how='left').fillna(method='ffill')
-    score_id_all = score_all.drop_duplicates()
+    score_id_all = score_id_all.drop_duplicates()
     
     #score difference bar/line
     score_diff_line = alt.Chart(score_id_all).mark_bar(strokeWidth=3).encode(
