@@ -128,7 +128,7 @@ def app():
         x2 = 'to',
         color=colorbar,
         opacity=opacity_cond,
-        #tooltip=['lineup','point_diff_stint','point_diff','time_played']
+        tooltip=['lineup','point_diff_stint','point_diff','time_played']
     ).properties(height=50,width=1000).add_selection(sel)
     
     #away bar chart
