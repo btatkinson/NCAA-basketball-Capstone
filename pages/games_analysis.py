@@ -122,7 +122,7 @@ def app():
         x2 = 'to',
         color=colorbar,
         opacity=opacity_cond,
-        tooltip=['lineup','point_diff_stint','point_diff','time_played']
+        #tooltip=['lineup','point_diff_stint','point_diff','time_played']
     ).properties(height=50,width=1000).add_selection(sel)
     
     #away bar chart
@@ -136,4 +136,4 @@ def app():
     
     final_chart = alt.vconcat((band+home_line+away_line),(h_bar&score_diff_line&a_bar)).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
 
-    st.altair_chart(a_bar)
+    st.altair_chart(final_chart)
