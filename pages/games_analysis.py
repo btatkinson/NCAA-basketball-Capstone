@@ -4,6 +4,45 @@ import pandas as pd
 import altair as alt
 import requests
 
+def team_pbp_df(school, nickname, year):
+
+  """
+  school: the name of the school as a string (proper casing is used)
+  nickname: the nickname of the school as a string (proper casing is used)
+  year: the season as an integer NOTE: the 2020-2021 CBB season is indicated with a value of 2020 – a game that occurred on 3/7/2021 will have a
+        a value of 2020 (????? MAYBE ????? NEEDS FURTHER EVALUATION)
+  """
+
+  # filter for top team market and name and season in both home and away columns
+  # grab the unique ids for those games
+  team_games = p[((p['play.on_court.home.market'] == school) & (p['play.on_court.home.name'] == nickname) & (p['year'] == year)) | 
+              ((p['play.on_court.away.market'] == school) & (p['play.on_court.away.name'] == nickname) & (p['year'] == year))]['meta.id'].unique()
+
+  # filter the original dataframe for those game_ids
+  team = p[(p['meta.id'].isin(team_games))]
+
+  ### STACK DATAFRAMES ON TOP OF EACH OTHER
+  # so that we don't have to check home/away
+
+  # only grab the columns without home/away
+  aw = [i for i in team.columns if 'home' not in i]
+  hm = [i for i in team.columns if 'away' not in i]
+
+  # filter dataframe for only those columns
+  away_df = team[aw]
+  home_df = team[hm]
+
+  # rename the columns for each df with 'team' instead of home/away
+  away_df.columns = [i.replace('away','team') for i in away_df.columns]
+  home_df.columns = [i.replace('home','team') for i in home_df.columns]
+
+  # stack home/away dfs on top of each other
+  combo = pd.concat([away_df,home_df])
+
+  combo = combo[combo['year'] == year]
+
+  return combo
+
 def app():
     
     df = pd.read_csv('src/test_games.csv')
@@ -146,3 +185,10 @@ def app():
     
     final_chart = alt.vconcat((band+home_line+away_line),(h_bar&score_diff_line&a_bar)).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     st.altair_chart(final_chart)
+    
+    team = team_pbp_df('Michigan', 'Wolverines', 2021)
+    option_player = st.selectbox(
+     'Please choose a player...',
+     team[(team['play.on_court.team.market'].isnull()) | (team['play.on_court.team.market'] == 'Michigan')][['play.on_court.team.player1.full_name', \
+     'play.on_court.team.player2.full_name','play.on_court.team.player3.full_name', 'play.on_court.team.player4.full_name', \
+     'play.on_court.team.player5.full_name']].melt().value.unique())
