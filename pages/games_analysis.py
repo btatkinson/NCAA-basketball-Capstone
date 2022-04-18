@@ -267,4 +267,5 @@ def app():
                               y = alt.Y('label',sort=alt.EncodingSortField(field='meta.scheduled')))
     
     st.dataframe(df[['id','label']])
+    st.dataframe(individual_player_times)
   
