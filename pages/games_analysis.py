@@ -17,8 +17,7 @@ def team_pbp_df(school, nickname, year):
 
   # filter for top team market and name and season in both home and away columns
   # grab the unique ids for those games
-  team_games = df[((df['play.on_court.home.market'] == school) & (df['play.on_court.home.name'] == nickname) & (df['year'] == year)) | \
-              ((df['play.on_court.away.market'] == school) & (df['play.on_court.away.name'] == nickname) & (df['year'] == year))]['meta.id'].unique()
+  team_games = df[(df['play.on_court.home.market'] == school) | (df['play.on_court.away.market'] == school)]['meta.id'].unique()
 
   # filter the original dataframe for those game_ids
   team = df[(df['meta.id'].isin(team_games))]
