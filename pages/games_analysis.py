@@ -266,5 +266,5 @@ def app():
                               x2 = 'to',
                               y = alt.Y('label',sort=alt.EncodingSortField(field='meta.scheduled')))
     
-    st.dataframe(individual_player_times)
+    st.dataframe(df[['id','label']])
   
