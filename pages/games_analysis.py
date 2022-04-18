@@ -187,7 +187,8 @@ def app():
     final_chart = alt.vconcat((band+home_line+away_line),(h_bar&score_diff_line&a_bar)).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     st.altair_chart(final_chart)
     
-    team = team_pbp_df('Michigan', 'Wolverines', 2021)
+    team = team_pbp_df(option_team, df[(df['play.on_court.away.market'] == option_team) | \
+                                       (df['play.on_court.home.market'] == option_team)]['nickname'].unique(), 2021)
     option_player = st.selectbox(
      'Please choose a player...',
      team[(team['play.on_court.team.market'].isnull()) | (team['play.on_court.team.market'] == 'Michigan')][['play.on_court.team.player1.full_name', \
