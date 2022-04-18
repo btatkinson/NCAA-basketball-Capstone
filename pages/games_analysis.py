@@ -189,6 +189,6 @@ def app():
     team = team_pbp_df(option_team, 2021)
     option_player = st.selectbox(
      'Please choose a player...',
-     team[(team['play.on_court.team.market'].isnull()) | (team['play.on_court.team.market'] == 'Michigan')][['play.on_court.team.player1.full_name', \
+     team[(team['play.on_court.team.market'].isnull()) | (team['play.on_court.team.market'] == option_team)][['play.on_court.team.player1.full_name', \
      'play.on_court.team.player2.full_name','play.on_court.team.player3.full_name', 'play.on_court.team.player4.full_name', \
      'play.on_court.team.player5.full_name']].melt().value.unique())
