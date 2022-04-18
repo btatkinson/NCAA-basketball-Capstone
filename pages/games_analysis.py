@@ -8,11 +8,10 @@ import requests
 
 df = pd.read_csv('src/test_games.csv')
 
-def team_pbp_df(school, nickname, year):
+def team_pbp_df(school, year):
 
   """
   school: the name of the school as a string (proper casing is used)
-  nickname: the nickname of the school as a string (proper casing is used)
   year: the season as an integer NOTE: the 2020-2021 CBB season is indicated with a value of 2020 – a game that occurred on 3/7/2021 will have a
         a value of 2020 (????? MAYBE ????? NEEDS FURTHER EVALUATION)
   """
@@ -187,8 +186,7 @@ def app():
     final_chart = alt.vconcat((band+home_line+away_line),(h_bar&score_diff_line&a_bar)).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     st.altair_chart(final_chart)
     
-    team = team_pbp_df(option_team, df[(df['play.on_court.away.market'] == option_team) | \
-                                       (df['play.on_court.home.market'] == option_team)]['nickname'].unique(), 2021)
+    team = team_pbp_df(option_team, 2021)
     option_player = st.selectbox(
      'Please choose a player...',
      team[(team['play.on_court.team.market'].isnull()) | (team['play.on_court.team.market'] == 'Michigan')][['play.on_court.team.player1.full_name', \
