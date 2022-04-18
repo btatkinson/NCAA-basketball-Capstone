@@ -263,4 +263,6 @@ def app():
                               x = 'from',
                               x2 = 'to',
                               y = alt.Y('label',sort=alt.EncodingSortField(field='scheduled')))
+    
+    st.altair_chart(individual_player_chart)
   
