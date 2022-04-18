@@ -4,6 +4,8 @@ import pandas as pd
 import altair as alt
 import requests
 
+df = pd.read_csv('src/test_games.csv')
+
 def team_pbp_df(school, nickname, year):
 
   """
@@ -44,8 +46,6 @@ def team_pbp_df(school, nickname, year):
   return combo
 
 def app():
-    
-    df = pd.read_csv('src/test_games.csv')
     
     option_team = st.selectbox(
      'Please choose a team...',
