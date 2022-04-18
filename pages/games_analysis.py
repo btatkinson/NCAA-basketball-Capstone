@@ -105,6 +105,8 @@ def player_oncourt_season(pbp_df, school, playername):
     trunc_line_df = change.copy()
     # only include rows where player is on-court
     trunc_line_df = trunc_line_df[(trunc_line_df['player_on'] == 1)]
+    
+    trunc_line_df = trunc_line_df.merge(df[['id','label']],left_on='id',right_on='id')
 
     return trunc_line_df
 
