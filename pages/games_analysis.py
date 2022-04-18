@@ -17,7 +17,7 @@ def app():
      df[(df['play.on_court.away.market'] == option_team) | (df['play.on_court.home.market'] == option_team)]['label'].unique())
     
     #preprocessing
-    score = df[df['label'] == option]
+    score = df[df['label'] == option_game]
     score = score[['play.home_points','play.away_points','play.clock.seconds_game','play.on_court.away.market','play.on_court.away.name',
        'play.on_court.home.market','play.on_court.home.name','meta.home.color','meta.away.color']]
     score.columns = ['home','away','time','home_market','home_name','away_market','away_name','home_color','away_color']
@@ -30,7 +30,7 @@ def app():
     home_color = score['home_color'].iloc[0]
     away_color = score['away_color'].iloc[0] 
     
-    lineups = df[df['label'] == option]
+    lineups = df[df['label'] == option_game]
 
     player_names = [i for i in [i for i in df.columns if 'full_name' in i] if 'on_court' in i]
 
