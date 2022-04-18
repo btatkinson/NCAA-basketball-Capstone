@@ -38,8 +38,6 @@ def team_pbp_df(school):
   # stack home/away dfs on top of each other
   combo = pd.concat([away_df,home_df])
 
-  combo = combo[combo['year'] == year]
-
   return combo
 
 def app():
