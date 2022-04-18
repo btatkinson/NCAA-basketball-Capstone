@@ -262,7 +262,7 @@ def app():
     individual_player_chart = alt.Chart(individual_player_times).mark_bar().encode(
                               x = 'from',
                               x2 = 'to',
-                              y = alt.Y('label',sort=alt.EncodingSortField(field='scheduled')))
+                              y = alt.Y('label',sort=alt.EncodingSortField(field='meta.scheduled')))
     
-    st.dataframe(individual_player_times)
+    st.altair_chart(individual_player_chart)
   
