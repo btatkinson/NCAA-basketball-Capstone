@@ -106,13 +106,6 @@ def player_oncourt_season(pbp_df, school, playername):
     # only include rows where player is on-court
     trunc_line_df = trunc_line_df[(trunc_line_df['player_on'] == 1)]
 
-    # merge with scheduled data so we know when the games were and can sort in viz
-    sched = final_schedule[['id','scheduled','home_alias','away_alias']]
-    sched['sched_format'] = pd.to_datetime(sched['scheduled']).dt.strftime('%m/%d/%Y')
-    sched['label'] = sched['sched_format'].astype(str) + ' | ' + sched['away_alias'] + ' @ ' + sched['home_alias']
-
-    trunc_line_df = trunc_line_df.merge(sched,left_on='id',right_on='id')
-
     return trunc_line_df
 
 def app():
