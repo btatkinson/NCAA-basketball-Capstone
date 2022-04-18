@@ -1,5 +1,3 @@
-
-   
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -271,7 +269,5 @@ def app():
     individual_player_chart = alt.Chart(individual_player_times).mark_bar().encode(
                               x = 'from',
                               x2 = 'to',
-                              y = alt.Y('label',sort=alt.EncodingSortField(field='scheduled'))
-                              )
-   st.altair_chart(individual_player_chart)
+                              y = alt.Y('label',sort=alt.EncodingSortField(field='scheduled')))
   
