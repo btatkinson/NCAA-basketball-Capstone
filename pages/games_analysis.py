@@ -14,7 +14,7 @@ def app():
     
     option_game = st.selectbox(
      'Please choose a game...',
-     df[(df['play.on_court.away.market'] == option_team) | (df['play.on_court.home.market'] == option_team)])
+     df[(df['play.on_court.away.market'] == option_team) | (df['play.on_court.home.market'] == option_team)]['label].unique())
     
     #preprocessing
     score = df[df['label'] == option]
