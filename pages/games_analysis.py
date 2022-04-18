@@ -8,9 +8,13 @@ def app():
     
     df = pd.read_csv('src/test_games.csv')
     
-    option = st.selectbox(
+    option_team = st.selectbox(
+     'Please choose a team...',
+     ['Michigan', 'Michigan State', 'Kentucky', 'Duke', 'North Carolina', 'Kansas', 'Gonzaga', 'Villanova'])
+    
+    option_game = st.selectbox(
      'Please choose a game...',
-     df['label'].unique())
+     df[(df['play.on_court.away.market'] == option_team) | (df['play.on_court.home.market'] == option_team)])
     
     #preprocessing
     score = df[df['label'] == option]
