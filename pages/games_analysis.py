@@ -247,7 +247,7 @@ def app():
     
     #away bar chart
     a_bar = alt.Chart(a_change).mark_bar(size=40).encode(
-        x = alt.X('from', axis=alt.Axis(title='')),
+        x = alt.X('from', axis=alt.Axis(title=a_change['team_market'].unique())),
         x2 = 'to',
         color=colorbar,
         opacity=opacity_cond,
