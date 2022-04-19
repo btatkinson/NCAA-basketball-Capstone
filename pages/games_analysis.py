@@ -288,7 +288,7 @@ def app():
                               ).properties(width = 650)
       
     st.altair_chart(individual_player_chart)
-    st.caption('''For the selected team, you can display the playing time of each player for all games in the game dropdown menu.  For each game, the
-               presence of a bar represents the time that the selected player was in the game while the absence of a bar represents the time that the
-               selected player was on the bench.  Note that not all players play in every game – for this reason, the number of games displayed can vary
-               from player to player.''')
+    st.caption('''For the selected team, you can display the playing time of each player for all games in the game dropdown menu with disconnected bar
+               charts.  For each game, the presence of a bar represents the time that the selected player was in the game while the absence of a bar 
+               represents the time that the selected player was on the bench.  Note that not all players play in every game – for this reason, the 
+               number of games displayed can vary from player to player.''')
