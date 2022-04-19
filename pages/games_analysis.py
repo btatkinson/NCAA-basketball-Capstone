@@ -118,7 +118,7 @@ def app():
     st.markdown('''Using data provided by Sportradar – an organization that collects and analyzes sports data – we analyzed individual games on a 
                 play-by-play basis.  For the purposes of this app, we are limited to only a subset of games due to the constraints imposed by file
                 size limits.  We selected games for a handful of teams occurring on or after January 1st, 2022 which you can explore with the various
-                dropdown menus.  Brief descriptions for each individual component are as follows:''')
+                dropdown menus.''')
     
     option_team = st.selectbox(
      'Please choose a team...',
@@ -263,8 +263,14 @@ def app():
     line_chart = (band+home_line+away_line).resolve_scale(color='independent').configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     bar_chart = (h_bar&score_diff_line&a_bar).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     st.altair_chart(line_chart)
-    st.caption('test testt test testestuhduifghadsuihgpifdauhgdfusipghufdishgodfshguoisgf')
+    st.caption('The score line plot displays the cumulative score of each team throughout the game.')
     st.altair_chart(bar_chart)
+    st.caption('''The two bar charts on the outside depict the various lineups used by each team over the course of the game.  Each block on a bar
+               represents the 5-man unit that was used by the team (indicated on the x-axis) at different points in the game where the length of each
+               block corresponds to the time that the unit spent on the floor.  Each block is color coded for the cumulative score difference at the
+               end of the unit's stint.  Placing your cursor over each block displays the names of the 5 players along with some additional statistics.''')
+    st.caption('''The bar chart in the middle depicts the cumulative score difference throughout the game.  The colors correspond to the teams indicated
+               by the line plot above.''')
     
     team = team_pbp_df(option_team, 2021)
       
