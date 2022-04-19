@@ -255,7 +255,9 @@ def app():
     ).properties(height=50,width=650).add_selection(sel)
     
     line_chart = (band+home_line+away_line).resolve_scale(color='independent').configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
+    bar_chart = (h_bar&score_diff_line&a_bar).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     st.altair_chart(line_chart)
+    st.altair_chart(bar_chart)
     
     team = team_pbp_df(option_team, 2021)
       
