@@ -224,13 +224,13 @@ def app():
     home_line = alt.Chart(score_id).mark_line(strokeWidth=4, color=alt.HexColor(h_color)).encode(
         x='time',
         y='home',
-        color = 'home_color:N'
+        color = 'home:N'
     ).properties(width=650)
 
     away_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(a_color)).encode(
         x='time',
         y='away',
-        color = 'away_color:N'
+        color = 'away:N'
     ).properties(width=650)
     
     #home bar chart
