@@ -114,7 +114,6 @@ def player_oncourt_season(pbp_df, school, playername):
 def app():
   
     st.title('Play-by-Play + Substitution Analysis')
-    st.header('About')
     st.markdown('''Using data provided by Sportradar – an organization that collects and analyzes sports data – we analyzed individual games on a 
                 play-by-play basis.  For the purposes of this app, we are limited to only a subset of games due to the constraints imposed by file
                 size limits.  We selected games for a handful of teams occurring on or after January 1st, 2022 which you can explore with the various
@@ -289,3 +288,7 @@ def app():
                               ).properties(width = 650)
       
     st.altair_chart(individual_player_chart)
+    st.caption('''For the selected team, you can display the playing time of each player for all games in the game dropdown menu.  For each game, the
+               presence of a bar represents the time that the selected player was in the game while the absence of a bar represents the time that the
+               selected player was on the bench.  Note that not all players play in every game – for this reason, the number of games displayed can vary
+               from player to player.''')
