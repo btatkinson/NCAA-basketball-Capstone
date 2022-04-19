@@ -107,6 +107,7 @@ def player_oncourt_season(pbp_df, school, playername):
     trunc_line_df = trunc_line_df[(trunc_line_df['player_on'] == 1)]
     
     trunc_line_df = trunc_line_df.merge(df[['id','label']],left_on='id',right_on='id')
+    trunc_line_df['to'] = trunc_line_df['to'].replace(0,2400)
 
     return trunc_line_df
 
