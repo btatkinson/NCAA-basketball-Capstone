@@ -197,7 +197,7 @@ def app():
     
     #interactivity 
     sel = alt.selection_single(on='mouseover')
-    colorbar = alt.Color('point_diff:Q',scale=alt.Scale(scheme='viridis'))
+    colorbar = alt.Color('point_diff:Q',scale=alt.Scale(scheme='viridis'), legend = alt.Legend(title = 'Score Difference'))
     opacity_cond = alt.condition(sel,alt.value(1),alt.value(.4))
     
     #more preprocessing
@@ -207,8 +207,8 @@ def app():
     
     #score difference bar/line
     score_diff_line = alt.Chart(score_id_all).mark_bar(strokeWidth=3).encode(
-        x=alt.X('time:Q',scale=alt.Scale(domainMax=2400,domainMin=0,clamp=True)),
-        y='score_diff',
+        x=alt.X('time:Q',scale=alt.Scale(domainMax=2400,domainMin=0,clamp=True), axis = alt.Axis(title = '')),
+        y=alt.Y('score_diff', title = 'Score Difference'),
         color = alt.condition("datum.score_diff > 0", alt.value(home_color), alt.value(away_color))
     ).properties(width=650,height=65)
 
