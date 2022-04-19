@@ -207,7 +207,7 @@ def app():
     
     #score difference bar/line
     score_diff_line = alt.Chart(score_id_all).mark_bar(strokeWidth=3).encode(
-        x=alt.X('time:Q',scale=alt.Scale(domainMax=2400,domainMin=0,clamp=True), axis = alt.Axis(title = '')),
+        x=alt.X('time:Q',scale=alt.Scale(domainMax=2400,domainMin=0,clamp=True), axis = alt.Axis(title = 'Seconds into Game')),
         y=alt.Y('score_diff', title = 'Score Difference'),
         color = alt.condition("datum.score_diff > 0", alt.value(home_color), alt.value(away_color))
     ).properties(width=650,height=65)
