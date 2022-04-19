@@ -218,23 +218,21 @@ def app():
         y=alt.Y('home', title = 'Score'),
         y2='away',
         color = alt.value('lightblue')
-    ).properties(width=650)
+    ).properties(width=768)
 
     home_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(h_color)).encode(
         x='time',
         y='home',
         #for some reason the dataframe has away_market and home_market flipped
         color = alt.Color(field = 'away_market', legend = alt.Legend(title = 'Team'), scale = alt.Scale(range = [h_color]))
-    ).properties(width=650)
-    
-    st.dataframe(score_id)
+    ).properties(width=768)
 
     away_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(a_color)).encode(
         x='time',
         y='away',
         #for some reason the dataframe has away_market and home_market flipped
         color = alt.Color(field = 'home_market', legend = alt.Legend(title = ''), scale = alt.Scale(range = [a_color]))
-    ).properties(width=650)
+    ).properties(width=768)
     
     #home bar chart
     h_bar = alt.Chart(h_change).mark_bar(size=40).encode(
@@ -256,7 +254,7 @@ def app():
     
     line_chart = (band+home_line+away_line).resolve_scale(color='independent').configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     bar_chart = (h_bar&score_diff_line&a_bar).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
-    st.altair_chart(alt.vconcat(line_chart, bar_chart))
+    st.altair_chart(alt.vconcat(line_chart, bar_chart).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0))
     #st.altair_chart(bar_chart)
     
     team = team_pbp_df(option_team, 2021)
