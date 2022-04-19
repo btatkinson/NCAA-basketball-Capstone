@@ -265,7 +265,7 @@ def app():
     st.caption('The score line plot displays the cumulative score of each team throughout the game.')
     st.altair_chart(bar_chart)
     st.caption('''The two bar charts on the outside depict the various lineups used by each team over the course of the game.  Each block on a bar
-               represents the 5-man unit that was used by the team (indicated on the x-axis) at different points in the game where the length of each
+               represents the 5-man unit that was used by the team (indicated on the x-axis) at different points in the game, where the length of each
                block corresponds to the time that the unit spent on the floor.  Each block is color coded for the cumulative score difference at the
                end of the unit's stint.  Placing your cursor over each block displays the names of the 5 players along with some additional statistics.''')
     st.caption('''The bar chart in the middle depicts the cumulative score difference throughout the game.  The colors correspond to the teams indicated
