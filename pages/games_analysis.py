@@ -266,6 +266,5 @@ def app():
                               x2 = 'to',
                               y = alt.Y('label',sort=alt.EncodingSortField(field='meta.scheduled')))
     
-    st.dataframe(df[['id','label']])
-    st.dataframe(individual_player_times)
+    st.altair_chart(individual_player_chart)
   
