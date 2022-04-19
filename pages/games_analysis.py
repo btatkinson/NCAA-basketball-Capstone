@@ -115,6 +115,9 @@ def app():
   
     st.title('Play-by-Play + Substitution Analysis')
     st.header('About')
+    st.markdown('''Using data provided by Sportradar – an organization that collects and analyzes sports data – we analyzed individual games on a 
+                play-by-play basis.  For the purposes of this app, we are limited to only a subset of games due to the constraints imposed by file
+                size limits.''')
     
     option_team = st.selectbox(
      'Please choose a team...',
