@@ -223,7 +223,7 @@ def app():
     home_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(h_color)).encode(
         x='time',
         y='home',
-        color = alt.Color(field = 'home_market', legend = alt.Legend(title = 'Team'), scale = alt.Scale(range = [h_color]))
+        color = alt.Color(field = 'away_market', legend = alt.Legend(title = 'Team'), scale = alt.Scale(range = [h_color]))
     ).properties(width=650)
     
     st.dataframe(score_id)
