@@ -117,7 +117,8 @@ def app():
     st.header('About')
     st.markdown('''Using data provided by Sportradar – an organization that collects and analyzes sports data – we analyzed individual games on a 
                 play-by-play basis.  For the purposes of this app, we are limited to only a subset of games due to the constraints imposed by file
-                size limits.''')
+                size limits.  We selected games for a handful of teams occurring on or after January 1st, 2022 which you can explore with the various
+                dropdown menus.  Brief descriptions for each individual component are as follows:''')
     
     option_team = st.selectbox(
      'Please choose a team...',
@@ -262,6 +263,7 @@ def app():
     line_chart = (band+home_line+away_line).resolve_scale(color='independent').configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     bar_chart = (h_bar&score_diff_line&a_bar).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     st.altair_chart(line_chart)
+    st.caption('test testt test testestuhduifghadsuihgpifdauhgdfusipghufdishgodfshguoisgf')
     st.altair_chart(bar_chart)
     
     team = team_pbp_df(option_team, 2021)
