@@ -273,5 +273,4 @@ def app():
                               y = alt.Y('label',sort=alt.EncodingSortField(field='meta.scheduled'), axis = alt.Axis(title = 'Games'))
                               ).properties(width = 650)
       
-    st.dataframe(individual_player_times)
     st.altair_chart(individual_player_chart)
