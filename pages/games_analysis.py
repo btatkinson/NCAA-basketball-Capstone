@@ -210,7 +210,7 @@ def app():
         x=alt.X('time:Q',scale=alt.Scale(domainMax=2400,domainMin=0,clamp=True), axis = alt.Axis(title = '')),
         y=alt.Y('score_diff', title = 'Score Difference'),
         color = alt.condition("datum.score_diff > 0", alt.value(home_color), alt.value(away_color))
-    ).properties(width=775,height=65)
+    ).properties(width=650,height=65)
 
     #score line plot
     band = alt.Chart(score_id).mark_area(opacity=.5).encode(
@@ -234,7 +234,7 @@ def app():
         y='away',
         #for some reason the dataframe has away_market and home_market flipped
         color = alt.Color(field = 'home_market', legend = alt.Legend(title = ''), scale = alt.Scale(range = [a_color]))
-    ).properties(width=750)
+    ).properties(width=775)
     
     #home bar chart
     h_bar = alt.Chart(h_change).mark_bar(size=40).encode(
