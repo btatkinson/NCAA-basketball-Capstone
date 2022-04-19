@@ -270,7 +270,7 @@ def app():
     individual_player_chart = alt.Chart(individual_player_times).mark_bar().encode(
                               x = alt.X('from', axis = alt.Axis(title = 'Seconds into Game')),
                               x2 = 'to',
-                              y = alt.Y('label',sort=alt.EncodingSortField(field='meta.scheduled'), axis = alt.Axis(title = 'Games')
+                              y = alt.Y('label',sort=alt.EncodingSortField(field='meta.scheduled'), axis = alt.Axis(title = 'Games'))
                               ).properties(width = 650)
       
     st.dataframe(individual_player_times)
