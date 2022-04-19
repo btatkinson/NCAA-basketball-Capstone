@@ -61,7 +61,7 @@ def player_oncourt_season(pbp_df, school, playername):
                     'play.on_court.team.name','type', 'made', 'shot_type', 'three_point_shot','player.full_name', 'player.jersey_number', 'rebound_type', 
                     'points','free_throw_type', 'shot_type_desc', 'play.clock.seconds','play.period', 'play.clock.seconds_game', 'play.clock.time_elapsed',
                     'play.on_court.team.player1.full_name','play.on_court.team.player2.full_name','play.on_court.team.player3.full_name',
-                    'play.on_court.team.player4.full_name','play.on_court.team.player5.full_name']
+                    'play.on_court.team.player4.full_name','play.on_court.team.player5.full_name', 'label']
     #filter to include columns
     filt = pbp_df[cols_to_keep]
     # filter to only include rows that are null or the exact school
