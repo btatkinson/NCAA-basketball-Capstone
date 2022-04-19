@@ -112,6 +112,8 @@ def player_oncourt_season(pbp_df, school, playername):
     return trunc_line_df
 
 def app():
+  
+    st.title('Play-by-Play + Substitution Analysis')
     
     option_team = st.selectbox(
      'Please choose a team...',
