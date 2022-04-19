@@ -225,6 +225,8 @@ def app():
         y='home',
         color = alt.Color(field = 'home_market', legend = alt.Legend(title = 'Team'), scale = alt.Scale(range = [h_color]))
     ).properties(width=650)
+    
+    st.dataframe(score_id)
 
     away_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(a_color)).encode(
         x='time',
