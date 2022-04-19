@@ -223,6 +223,7 @@ def app():
     home_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(h_color)).encode(
         x='time',
         y='home',
+        #for some reason the dataframe has away_market and home_market flipped
         color = alt.Color(field = 'away_market', legend = alt.Legend(title = 'Team'), scale = alt.Scale(range = [h_color]))
     ).properties(width=650)
     
@@ -230,7 +231,9 @@ def app():
 
     away_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(a_color)).encode(
         x='time',
-        y='away'
+        y='away',
+        #for some reason the dataframe has away_market and home_market flipped
+        color = alt.Color(field = 'home_market', legend = alt.Legend(title = ''), scale = alt.Scale(range = [a_color]))
     ).properties(width=650)
     
     #home bar chart
@@ -251,7 +254,7 @@ def app():
         tooltip=['lineup','point_diff_stint','point_diff','time_played']
     ).properties(height=50,width=650).add_selection(sel)
     
-    final_chart = alt.vconcat((band+home_line+away_line),(h_bar&score_diff_line&a_bar)).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
+    final_chart = alt.vconcat((band+home_line+away_line).resolve_scale(color='independent'),(h_bar&score_diff_line&a_bar)).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     st.altair_chart(final_chart)
     
     team = team_pbp_df(option_team, 2021)
