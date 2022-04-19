@@ -207,47 +207,45 @@ def app():
     
     #score difference bar/line
     score_diff_line = alt.Chart(score_id_all).mark_bar(strokeWidth=3).encode(
-         x=alt.X('time:Q',scale=alt.Scale(domainMax=2400,domainMin=0,clamp=True), axis = alt.Axis(title = '')),
-         y=alt.Y('score_diff', title = 'Score Difference'),
-         color = alt.condition("datum.score_diff > 0", alt.value(home_color), alt.value(away_color))
-     ).properties(width=650,height=65)
+        x=alt.X('time:Q',scale=alt.Scale(domainMax=2400,domainMin=0,clamp=True)),
+        y='score_diff',
+        color = alt.condition("datum.score_diff > 0", alt.value(home_color), alt.value(away_color))
+    ).properties(width=650,height=65)
 
     #score line plot
     band = alt.Chart(score_id).mark_area(opacity=.5).encode(
-         x=alt.X('time', axis=alt.Axis(title='Seconds into Game')),
-         y=alt.Y('home', title = 'Score'),
-         y2='away',
-         color = alt.value('lightblue')
+        x='time',
+        y='home',
+        y2='away',
+        color = alt.value('lightblue')
     ).properties(width=650)
 
     home_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(h_color)).encode(
-         x='time',
-         y='home',
-         color = alt.Color(field = 'home_market', legend = alt.Legend(title = 'Team'), scale = alt.Scale(range = [h_color]))
+        x='time',
+        y='home'
     ).properties(width=650)
 
     away_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(a_color)).encode(
-         x='time',
-         y='away',
-         color = alt.Color(field = 'away_market', legend = alt.Legend(title = ''), scale = alt.Scale(range = [a_color]))
+        x='time',
+        y='away'
     ).properties(width=650)
     
     #home bar chart
     h_bar = alt.Chart(h_change).mark_bar(size=40).encode(
-         x = alt.X('from', axis=alt.Axis(title='')),
-         x2 = 'to',
-         color= alt.Color('point_diff:Q',scale=alt.Scale(scheme='viridis'), legend = alt.Legend(title = 'Score Difference')),
-         opacity=opacity_cond,
-         tooltip=['lineup','point_diff_stint','point_diff','time_played']
+        x = alt.X('from',axis=alt.Axis(title='')),
+        x2 = 'to',
+        color=colorbar,
+        opacity=opacity_cond,
+        tooltip=['lineup','point_diff_stint','point_diff','time_played']
     ).properties(height=50,width=650).add_selection(sel)
     
     #away bar chart
     a_bar = alt.Chart(a_change).mark_bar(size=40).encode(
-         x = alt.X('from', axis=alt.Axis(title='')),
-         x2 = 'to',
-         color=colorbar,
-         opacity=opacity_cond,
-         tooltip=['lineup','point_diff_stint','point_diff','time_played']
+        x = alt.X('from',axis=alt.Axis(title='Minutes into Game')),
+        x2 = 'to',
+        color=colorbar,
+        opacity=opacity_cond,
+        tooltip=['lineup','point_diff_stint','point_diff','time_played']
     ).properties(height=50,width=650).add_selection(sel)
     
     final_chart = alt.vconcat((band+home_line+away_line),(h_bar&score_diff_line&a_bar)).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
