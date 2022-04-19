@@ -218,14 +218,14 @@ def app():
         y=alt.Y('home', title = 'Score'),
         y2='away',
         color = alt.value('lightblue')
-    ).properties(width=768)
+    ).properties(width=650)
 
     home_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(h_color)).encode(
         x='time',
         y='home',
         #for some reason the dataframe has away_market and home_market flipped
         color = alt.Color(field = 'away_market', legend = alt.Legend(title = 'Team'), scale = alt.Scale(range = [h_color]))
-    ).properties(width=768)
+    ).properties(width=650)
     
     st.dataframe(score_id)
 
@@ -234,7 +234,7 @@ def app():
         y='away',
         #for some reason the dataframe has away_market and home_market flipped
         color = alt.Color(field = 'home_market', legend = alt.Legend(title = ''), scale = alt.Scale(range = [a_color]))
-    ).properties(width=768)
+    ).properties(width=650)
     
     #home bar chart
     h_bar = alt.Chart(h_change).mark_bar(size=40).encode(
