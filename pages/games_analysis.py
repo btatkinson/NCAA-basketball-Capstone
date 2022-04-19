@@ -238,16 +238,16 @@ def app():
     
     #home bar chart
     h_bar = alt.Chart(h_change).mark_bar(size=40).encode(
-        x = alt.X('from',axis=alt.Axis(title='')),
+        x = alt.X('from', axis=alt.Axis(title='')),
         x2 = 'to',
-        color=colorbar,
+        color= alt.Color('point_diff:Q',scale=alt.Scale(scheme='viridis'), legend = alt.Legend(title = 'Score Difference')),
         opacity=opacity_cond,
         tooltip=['lineup','point_diff_stint','point_diff','time_played']
     ).properties(height=50,width=650).add_selection(sel)
     
     #away bar chart
     a_bar = alt.Chart(a_change).mark_bar(size=40).encode(
-        x = alt.X('from',axis=alt.Axis(title='Minutes into Game')),
+        x = alt.X('from', axis=alt.Axis(title='')),
         x2 = 'to',
         color=colorbar,
         opacity=opacity_cond,
