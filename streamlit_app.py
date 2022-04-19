@@ -18,7 +18,7 @@ app = MultiPage()
 #col2.title("Data Storyteller Application")
 
 # Add all your application here
-app.add_page("Games Analysis", games_analysis.app)
+app.add_page("Play-by-Play + Substitution", games_analysis.app)
 app.add_page("Network Analysis", network_analysis.app)
 app.add_page("Player Performance Prediction", player_performance_prediction.app)
 app.add_page("Clustering", clustering.app)
