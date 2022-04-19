@@ -222,8 +222,7 @@ def app():
 
     home_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(h_color)).encode(
         x='time',
-        y='home',
-        color = 'home_market:N'
+        y='home'
     ).properties(width=650)
 
     away_line = alt.Chart(score_id).mark_line(strokeWidth=4,color=alt.HexColor(a_color)).encode(
