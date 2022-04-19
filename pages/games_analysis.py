@@ -238,7 +238,7 @@ def app():
     
     #home bar chart
     h_bar = alt.Chart(h_change).mark_bar(size=40).encode(
-        x = alt.X('from', axis=alt.Axis(title='')),
+        x = alt.X('from', axis=alt.Axis(title=h_change['team_market'].unique())),
         x2 = 'to',
         color= alt.Color('point_diff:Q',scale=alt.Scale(scheme='viridis'), legend = alt.Legend(title = 'Score Difference')),
         opacity=opacity_cond,
