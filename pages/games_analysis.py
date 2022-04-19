@@ -250,7 +250,7 @@ def app():
          tooltip=['lineup','point_diff_stint','point_diff','time_played']
     ).properties(height=50,width=650).add_selection(sel)
     
-    final_chart = alt.vconcat((band+home_line+away_line),(h_bar&score_diff_line&a_bar)).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
+    final_chart = alt.vconcat((band+home_line+away_line).resolve_scale(color='independent'),(h&score_diff_line&a)).configure_axis(gridOpacity=.5).configure_view(strokeWidth=0)
     st.altair_chart(final_chart)
     
     team = team_pbp_df(option_team, 2021)
