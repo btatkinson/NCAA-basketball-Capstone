@@ -214,8 +214,8 @@ def app():
 
     #score line plot
     band = alt.Chart(score_id).mark_area(opacity=.5).encode(
-        x='time',
-        y='home',
+        x=alt.X('time', axis=alt.Axis(title='Seconds into Game')),
+        y=alt.Y('home', title = 'Score'),
         y2='away',
         color = alt.value('lightblue')
     ).properties(width=650)
