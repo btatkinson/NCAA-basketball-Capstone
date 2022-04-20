@@ -14,7 +14,7 @@ def app():
   
   st.subheader('Preliminary Data Sample')
   df = pd.read_csv('src/test_games.csv', nrows = 1000)
-  df.drop(labels = 'Unnamed: 0', inplace = True)
+  df.drop(labels = 'Unnamed: 0', axis = 1, inplace = True)
   st.dataframe(df)
   
   ########## NETWORK ANALYSIS SECTION CODE ##########
