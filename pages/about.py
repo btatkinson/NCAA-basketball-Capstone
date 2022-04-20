@@ -13,7 +13,7 @@ def app():
   st.markdown('Insert brief description about page')
   
   st.subheader('Preliminary Data Sample')
-  df = lpd.read_csv('src/test_games.csv', nrows = 1000)
+  df = pd.read_csv('src/test_games.csv', nrows = 1000)
   df.drop(columns = 'Unnamed: 0', inplace = True)
   st.dataframe(df)
   
