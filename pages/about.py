@@ -11,7 +11,7 @@ def app():
   st.header('Play-by-Play + Substitution')
   st.markdown('Insert brief description about page')
   st.subheader('Preliminary Data Sample')
-  df = pdfdsafdsa.read_csv('src/test_games.csv', nrows = 1000)
+  df = pd.read_csv('src/test_games.csv', nrows = 1000)
   st.dataframe(df)
   
   ########## NETWORK ANALYSIS SECTION CODE ##########
