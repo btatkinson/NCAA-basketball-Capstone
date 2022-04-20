@@ -9,9 +9,12 @@ def app():
   
   ########## PLAY-BY-PLAY + SUBSTITUTION SECTION CODE ##########
   st.header('Play-by-Play + Substitution')
+  
   st.markdown('Insert brief description about page')
+  
   st.subheader('Preliminary Data Sample')
   df = pd.read_csv('src/test_games.csv', nrows = 1000)
+  df.drop(columns = 'Unnamed:0', inplace = True)
   st.dataframe(df)
   
   ########## NETWORK ANALYSIS SECTION CODE ##########
