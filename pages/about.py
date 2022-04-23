@@ -29,7 +29,10 @@ def app():
   st.header('Clustering')
   st.markdown('Insert brief description about page')
   
+  ########## STATEMENT OF WORK SECTION CODE ##########
+  st.header('Statement of Work')
+  st.markdown('Statements of work go here.')
+  
   ########## REFERENCES SECTION CODE ##########
   st.header('References?')
   st.markdown('List references here')
-            
