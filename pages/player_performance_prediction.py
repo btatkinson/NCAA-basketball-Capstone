@@ -91,7 +91,7 @@ def display_prediction_graph(player_pred):#line= True, bars=True,head=True,logo=
     return (line+bars+logo)
 
 def app():
-    st.title('NCAA Player Points Prediction')
+    st.title('Player Points Prediction')
     st.markdown("""
     This app predicts how many points a player will score each game on a sample of teams due to file size limits.
     * **Main Features:** Player Cumulative Average, Player Rolling Averages, Opponent Points Allowed to Role and Position. 
