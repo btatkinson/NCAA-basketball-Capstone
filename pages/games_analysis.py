@@ -67,7 +67,8 @@ def team_pbp_df(school, year):
   # stack home/away dfs on top of each other
   combo = pd.concat([away_df,home_df])
 
-  combo = combo[combo['season'] == season]
+  combo = combo[combo['season'] == season.astype(str)]
+  
   return combo
 
 def player_oncourt_season(pbp_df, school, playername):
