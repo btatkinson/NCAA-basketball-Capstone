@@ -6,12 +6,16 @@ from sklearn.model_selection import train_test_split,GridSearchCV
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error,make_scorer
+
 sample_df_box_score_and_features= pd.read_csv("src/sample_player_and_opp_stats_with_position.csv",index_col=0)
+
 ### Using 2022 as test year. Train on a sample of the other years  
 training_df =  sample_df_box_score_and_features[sample_df_box_score_and_features["season"]<2022].sample(5000,random_state=698)
 testing_df = sample_df_box_score_and_features[sample_df_box_score_and_features["season"]==2022]
+
 ### fill in colors for missing teams - Dark Grey 
 testing_df["team_color"] = testing_df.loc[:,"team_color"].fillna(value='#555555')
+
 #### Columns to use for model 
 def transform_training_testing(dataframe):
     columns = ["prev_player_ppg","prev_player_points_per_min",  "game_number",
@@ -26,8 +30,10 @@ def transform_training_testing(dataframe):
     points_df_model = points_df_model.rename(columns = {"prev_player_ppg":"prev_avg_player_ppg","prev_player_points_per_min":"prev_avg_player_points_per_min"})
     points_df_model = points_df_model.dropna()
     return points_df_model
+
 training_df_processed = transform_training_testing(training_df)
 testing_df_processed = transform_training_testing(testing_df)
+
 def convert_to_training_testing(training_df_processed,testing_df_processed):
     X_train= training_df_processed.loc[:, ~training_df_processed.columns.isin(['pts'])]               
     y_train = training_df_processed["pts"]
@@ -37,6 +43,7 @@ def convert_to_training_testing(training_df_processed,testing_df_processed):
     X_train_scaled = MinMaxScaler().fit_transform(X_train)
     X_test_scaled= MinMaxScaler().fit_transform(X_test)
     return X_train,y_train,X_test,y_test,X_train_scaled,X_test_scaled
+
 X_train,y_train,X_test,y_test,X_train_scaled,X_test_scaled = convert_to_training_testing(training_df_processed,testing_df_processed)
 linear_reg = LinearRegression().fit(X_train_scaled,y_train)
 y_pred = linear_reg.predict(X_test_scaled)
@@ -44,6 +51,7 @@ mae = mean_absolute_error(y_test, y_pred)
 pts_predictions_df = y_test.to_frame().rename(columns={"pts":"pts_label"})
 pts_predictions_df['points_prediction'] = y_pred
 merged_predictions = pd.merge(pts_predictions_df,sample_df_box_score_and_features,left_index= True, right_index= True)
+
 def display_prediction_graph(player_pred):#line= True, bars=True,head=True,logo= True):
   # player_pred = merged_predictions[merged_predictions.athlete_display_name == player]
   line = alt.Chart(player_pred).mark_line(strokeDash=[1,1],color= 'black').encode(
@@ -80,7 +88,8 @@ def display_prediction_graph(player_pred):#line= True, bars=True,head=True,logo=
         )
     return (line+bars+logo+head_shot_image)
   except:
-    return (line+bars+logo)  
+    return (line+bars+logo)
+
 def app():
     st.title('NCAA Player Points Prediction Model')
     st.markdown("""
