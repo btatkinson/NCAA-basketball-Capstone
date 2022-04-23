@@ -112,6 +112,6 @@ def player_oncourt_season(pbp_df, school, playername):
     return trunc_line_df
 
 def app():
-  
+  st.dataframe(df)
    
 
