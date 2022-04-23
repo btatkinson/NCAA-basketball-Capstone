@@ -67,7 +67,7 @@ def team_pbp_df(school, year):
   # stack home/away dfs on top of each other
   combo = pd.concat([away_df,home_df])
 
-  combo = combo[combo['season'] == season.astype(str)]
+  #combo = combo[combo['season'] == season.astype(str)]
   
   return combo
 
@@ -122,7 +122,7 @@ def player_oncourt_season(pbp_df, school, playername):
     gs_merged = (gs_dedupe.groupby(['meta_id','meta_scheduled']).apply(lambda group: all_times.merge(group[['time','player_on']],
                                                                                                  left_on=['play.clock.seconds_game'],
                                                                                                  right_on=['time'],how='left').fillna(method='bfill')))
-
+    st.dataframe(gs_merged)
     # reset index and rename time col
     gs_merged = gs_merged.reset_index().drop(columns=['level_2','time']).rename(columns={'play.clock.seconds_game':'time'})
 
