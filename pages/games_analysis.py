@@ -47,7 +47,7 @@ def team_pbp_df(school, year):
   team = df[(df['meta.id'].isin(team_games))]
 
   # check to make sure the math is correct
-  #assert len(team['meta.id'].unique()) == game_counts.head(1)['count'].iloc[0]
+  assert len(team['meta.id'].unique()) == game_counts.head(1)['count'].iloc[0]
   
   ### STACK DATAFRAMES ON TOP OF EACH OTHER
   # so that we don't have to check home/away for auburn data
@@ -67,7 +67,7 @@ def team_pbp_df(school, year):
   # stack home/away dfs on top of each other
   combo = pd.concat([away_df,home_df])
 
-  #combo = combo[combo['season'] == season]
+  combo = combo[combo['season'] == season]
   
   return combo
 
@@ -127,8 +127,7 @@ def player_oncourt_season(pbp_df, school, playername):
     gs_merged = gs_merged.reset_index().drop(columns=['level_2','time']).rename(columns={'play.clock.seconds_game':'time'})
 
     # change time col from bool to int
-    #gs_merged['player_on'] = gs_merged['player_on'].astype(int)
-    gs_merged.player_on = gs_merged.player_on.replace({'true': 1, 'false': 0})
+    gs_merged['player_on'] = gs_merged['player_on'].astype(int)
     
     # format mp column for each game
     gs_merged['mp_decimal'] = gs_merged.groupby('meta_id')['player_on'].transform('sum')
