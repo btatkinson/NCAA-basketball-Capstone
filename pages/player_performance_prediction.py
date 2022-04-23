@@ -54,16 +54,16 @@ merged_predictions = pd.merge(pts_predictions_df,sample_df_box_score_and_feature
 
 def display_prediction_graph(player_pred):#line= True, bars=True,head=True,logo= True):
   # player_pred = merged_predictions[merged_predictions.athlete_display_name == player]
-  line = alt.Chart(player_pred).mark_line(strokeDash=[1,1],color= 'black').encode(
+  line = alt.Chart(player_pred).mark_line(strokeDash=[1,1],color= 'red').encode(
       x='game_date:T',
       y=alt.Y('points_prediction'),
-      tooltip = ["game_date:T",'points_prediction','pts',"min","starter"]
+      tooltip = ["game_date:T","opponent_abbrev",'points_prediction','pts',"min","starter"]
       )
   bars = alt.Chart(player_pred).mark_bar().encode(
       x=alt.X('game_date:T', title = 'Game Date'),
       y=alt.Y('pts', title = "Points"),
       color = alt.Color('team_color', legend = None),
-      tooltip = ["game_date:T",'points_prediction','pts',"min","starter"]
+      tooltip = ["game_date:T","opponent_abbrev",'points_prediction','pts',"min","starter"]
       )
   try:
     logo = alt.Chart(player_pred).mark_image().encode(
