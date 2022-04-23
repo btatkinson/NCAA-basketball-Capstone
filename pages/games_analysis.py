@@ -146,7 +146,7 @@ def player_oncourt_season(pbp_df, school, playername):
     # add for labeling purposes
     gs_merged['mp'] = gs_merged['mp'] + ' minutes'
     
-    gs_merged = gs_merged.merge(gs,left_on='meta_id',right_on='meta.id')
+    #gs_merged = gs_merged.merge(gs,left_on='meta_id',right_on='meta.id')
     
     # drop dupes from time for each game
     gs_merged = gs_merged.drop_duplicates(['meta_id','time'])
