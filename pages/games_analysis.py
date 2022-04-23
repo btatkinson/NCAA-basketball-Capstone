@@ -47,7 +47,7 @@ def team_pbp_df(school, year):
   team = df[(df['meta.id'].isin(team_games))]
 
   # check to make sure the math is correct
-  assert len(team['meta.id'].unique()) == game_counts.head(1)['count'].iloc[0]
+  #assert len(team['meta.id'].unique()) == game_counts.head(1)['count'].iloc[0]
   
   ### STACK DATAFRAMES ON TOP OF EACH OTHER
   # so that we don't have to check home/away for auburn data
