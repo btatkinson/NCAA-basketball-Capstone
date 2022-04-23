@@ -156,7 +156,7 @@ def player_oncourt_season(pbp_df, school, playername):
     gs_merged['half_time'] = 1200
     
     cols_to_keep_viz = ['time','player_on','label','half_time','meta_scheduled','mp']
-
+    st.dataframe(gs_merged)
     gs_viz = gs_merged[cols_to_keep_viz]
 
     return gs_viz
