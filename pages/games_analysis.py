@@ -117,8 +117,6 @@ def player_oncourt_season(pbp_df, school, playername):
     gs_dedupe = gs.drop_duplicates(subset=['meta.id','play.clock.seconds_game']).rename(columns={'play.clock.seconds_game':'time',
                                                                                              'meta.id':'meta_id',
                                                                                              'meta.scheduled':'meta_scheduled'})
-    st.dataframe(gs)
-    st.dataframe(gs_dedupe)
     # merge with the all_times dataframe to fill in time gaps
     gs_merged = (gs_dedupe.groupby(['meta_id','meta_scheduled']).apply(lambda group: all_times.merge(group[['time','player_on']],
                                                                                                  left_on=['play.clock.seconds_game'],
@@ -147,6 +145,8 @@ def player_oncourt_season(pbp_df, school, playername):
 
     # add for labeling purposes
     gs_merged['mp'] = gs_merged['mp'] + ' minutes'
+    
+    gs_merged = gs_merged.merge(df,left_on='meta_id',right_on='meta.id')
     
     # drop dupes from time for each game
     gs_merged = gs_merged.drop_duplicates(['meta_id','time'])
