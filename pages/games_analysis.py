@@ -67,7 +67,7 @@ def team_pbp_df(school, year):
   # stack home/away dfs on top of each other
   combo = pd.concat([away_df,home_df])
 
-  #combo = combo[combo['season'] == season.astype(str)]
+  #combo = combo[combo['season'] == season]
   
   return combo
 
@@ -117,13 +117,12 @@ def player_oncourt_season(pbp_df, school, playername):
     gs_dedupe = gs.drop_duplicates(subset=['meta.id','play.clock.seconds_game']).rename(columns={'play.clock.seconds_game':'time',
                                                                                              'meta.id':'meta_id',
                                                                                              'meta.scheduled':'meta_scheduled'})
-    st.dataframe(gs)
-    st.dataframe(gs_dedupe)
+
     # merge with the all_times dataframe to fill in time gaps
     gs_merged = (gs_dedupe.groupby(['meta_id','meta_scheduled']).apply(lambda group: all_times.merge(group[['time','player_on']],
                                                                                                  left_on=['play.clock.seconds_game'],
                                                                                                  right_on=['time'],how='left').fillna(method='bfill')))
-    st.dataframe(gs_merged)
+
     # reset index and rename time col
     gs_merged = gs_merged.reset_index().drop(columns=['level_2','time']).rename(columns={'play.clock.seconds_game':'time'})
 
@@ -157,7 +156,7 @@ def player_oncourt_season(pbp_df, school, playername):
     gs_merged['half_time'] = 1200
     
     cols_to_keep_viz = ['time','player_on','label','half_time','meta_scheduled','mp']
-    st.dataframe(gs_merged)
+
     gs_viz = gs_merged[cols_to_keep_viz]
 
     return gs_viz
@@ -314,7 +313,7 @@ def app():
                end of the unit's stint.  Placing your cursor over each block displays the names of the 5 players along with the plus/minus rating for
                that unit, the cumulative score difference, and the time played, in minutes, for that unit.''')
     
-    team = team_pbp_df(option_team, 2022)
+    team = team_pbp_df(option_team, 2021)
       
     option_player = st.selectbox(
      'Please choose a player...',
