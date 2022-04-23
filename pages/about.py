@@ -31,7 +31,10 @@ def app():
   
   ########## STATEMENT OF WORK SECTION CODE ##########
   st.header('Statement of Work')
-  st.markdown('Statements of work go here.')
+  st.markdown('Blake statement of work.')
+  st.markdown('Max statement of work.')
+  st.markdown('Zachary statement of work.')
+  st.markdown('Matthew statement of work.')
   
   ########## REFERENCES SECTION CODE ##########
   st.header('References?')
