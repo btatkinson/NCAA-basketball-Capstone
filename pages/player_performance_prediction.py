@@ -115,18 +115,19 @@ def app():
     )
     #### If statements when the images are null. 
     player_pred = team_predictions[team_predictions.athlete_display_name == option_player]
+    
     st.write(player_pred)
     st.subheader('Points Model Chart')
-    st.markdown('''The graph below illustrates a sample of the points model using 
+    st.altair_chart(display_prediction_graph(player_pred))
+    st.markdown('''The graph illustrates a sample of the points model using 
                     the dashed lines as predictions and bars for the number of points 
                     a player scored each game. 
-                .''')
+                ''')
     rounded_mae = round(mae,2)
     st.markdown('''Mean Absolute Error (MAE) was used for both interpretability and 
-                    treating overestimates and underestimates the same.
-                    The metric used (on all the sampled players) provides us 
-                    an understanding of how many points on average our predicted points 
-                    differed from the actual points scored.
+                    treating overestimates and underestimates as equal.
+                    The metric used (on all the sampled players) provides for us 
+                    an understanding of how many points, on average, our predicted points 
+                    differ from the actual points scored.
                 ''')
     st.markdown("MAE for all players in the sample: {}".format(rounded_mae))
-    st.altair_chart(display_prediction_graph(player_pred))
