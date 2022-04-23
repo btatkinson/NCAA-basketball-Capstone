@@ -128,7 +128,7 @@ def player_oncourt_season(pbp_df, school, playername):
 
     # change time col from bool to int
     #gs_merged['player_on'] = gs_merged['player_on'].astype(int)
-    gs_merged.player_on = gs_merged.player_on({'true': 1, 'false': 0})
+    gs_merged.player_on = gs_merged.player_on.replace({'true': 1, 'false': 0})
     
     # format mp column for each game
     gs_merged['mp_decimal'] = gs_merged.groupby('meta_id')['player_on'].transform('sum')
