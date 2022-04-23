@@ -125,6 +125,8 @@ def player_oncourt_season(pbp_df, school, playername):
 
     # reset index and rename time col
     gs_merged = gs_merged.reset_index().drop(columns=['level_2','time']).rename(columns={'play.clock.seconds_game':'time'})
+    
+    st.dataframe(gs_merged)
 
     # change time col from bool to int
     gs_merged['player_on'] = gs_merged['player_on'].astype(int)
