@@ -5,7 +5,7 @@ def app():
   
   ########## LANDING PAGE CODE ##########
   st.title('Landing Page Title Goes Here')
-  st.markdown('This is where I envision the required blog post will go.')
+  st.markdown('This is where I envision the required blog post will go (perhaps extended throughout the subheader sections).')
   
   ########## PLAY-BY-PLAY + SUBSTITUTION SECTION CODE ##########
   st.header('Play-by-Play + Substitution')
