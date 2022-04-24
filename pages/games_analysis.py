@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 import altair as alt
 from collections import Counter
-from datetime import timedelta
 
 df = pd.read_csv('src/test_games.csv')
 
@@ -53,14 +52,6 @@ def team_pbp_df(school, season):
   combo = combo[combo['season'] == season]
 
   return combo
-
-def get_time_mm_ss(sec):
-      # create timedelta and convert it into string
-      td_str = str(timedelta(seconds=sec))
-
-      # split string into individual component
-      x = td_str.split(':')
-      return f"{x[-2]}:{x[-1]}"
 
 def player_oncourt_season(pbp_df, school, playername):
   player_cols = [i for i in pbp_df.columns if all(['team.player' in i, 'full_name' in i])]
@@ -117,6 +108,16 @@ def player_oncourt_season(pbp_df, school, playername):
   # format mp column for each game
   gs_merged['mp_decimal'] = gs_merged.groupby('meta_id')['player_on'].transform('sum')
 
+  from datetime import timedelta
+
+  def get_time_mm_ss(sec):
+      # create timedelta and convert it into string
+      td_str = str(timedelta(seconds=sec))
+
+      # split string into individual component
+      x = td_str.split(':')
+      return f"{x[-2]}:{x[-1]}"
+
   gs_merged['mp'] = gs_merged['mp_decimal'].apply(lambda x: get_time_mm_ss(x))
 
   # add for labeling purposes
@@ -139,15 +140,3 @@ def player_oncourt_season(pbp_df, school, playername):
 def app():
   
   st.title('Play-by-Play + Substitution Analysis')
-  st.markdown('''Using data provided by Sportradar – an organization that collects and analyzes sports data – we analyzed individual games on a
-                play-by-play basis.  For the purposes of this app, we are limited to only a subset of games due to the constraints imposed by file
-                size limits.  We selected games for a handful of teams occurring on or after January 1st, 2022 which you can explore with the various
-                dropdown menus.''')
-
-   option_team = st.selectbox(
-     'Please choose a team...',
-     ['Michigan', 'Michigan State', 'Kentucky', 'Duke', 'Kansas', 'Gonzaga'])
-
-    option_game = st.selectbox(
-     'Please choose a game...',
-     df[(df['play.on_court.away.market'] == option_team) | (df['play.on_court.home.market'] == option_team)]['label'].unique())
