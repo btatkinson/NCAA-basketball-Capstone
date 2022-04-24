@@ -6,7 +6,13 @@ def app():
   ########## LANDING PAGE CODE ##########
   st.title('SIADS 697/698 Capstone Project')
   st.header('About')
-  st.markdown('Words go here.')
+  st.subheader('Team Members')
+  st.markdown('''* Blake Atkinson (btatkins@umich.edu)
+  * Max Cohen (maxwc@umich.edu)
+  * Zachary Kramer (zakramer@umich.edu)
+  *Matthew Zimolzak (zimolzak@umich.edu)''')
+  
+  
   
   ########## STATEMENT OF WORK SECTION CODE ##########
   st.header('Statement of Work')
