@@ -5,7 +5,7 @@ def app():
   
   ########## LANDING PAGE CODE ##########
   st.title('Landing Page Title Goes Here')
-  st.markdown('This is where I envision the required blog post will go.')
+  st.markdown('This is where I envision the required blog post will go (perhaps extended throughout the subheader sections).')
   
   ########## PLAY-BY-PLAY + SUBSTITUTION SECTION CODE ##########
   st.header('Play-by-Play + Substitution')
@@ -29,7 +29,13 @@ def app():
   st.header('Clustering')
   st.markdown('Insert brief description about page')
   
+  ########## STATEMENT OF WORK SECTION CODE ##########
+  st.header('Statement of Work')
+  st.markdown('Blake statement of work.')
+  st.markdown('Max statement of work.')
+  st.markdown('Zachary statement of work.')
+  st.markdown('Matthew statement of work.')
+  
   ########## REFERENCES SECTION CODE ##########
   st.header('References?')
   st.markdown('List references here')
-            
