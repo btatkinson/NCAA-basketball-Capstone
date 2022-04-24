@@ -101,6 +101,8 @@ def app():
     * **Python libraries:** pandas, streamlit, numpy, altair, sklearn
     * **Data source:** [sportsdataverse-py](https://sportsdataverse-py.sportsdataverse.org/).
     """)
+    
+    st.subheader("Player Dataframe")
     option_team = st.selectbox(
         'Please choose a team...',
         list(merged_predictions.team_short_display_name.unique())
@@ -109,7 +111,6 @@ def app():
     team_predictions = merged_predictions[merged_predictions.team_short_display_name==option_team]
 #     st.write(team_predictions) 
     # player = "Ochai Agbaji"
-    st.subheader("Player Dataframe")
     option_player = st.selectbox(
         'Please choose a player...',
         list(team_predictions.athlete_display_name.unique())
