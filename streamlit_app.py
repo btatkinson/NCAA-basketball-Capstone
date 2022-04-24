@@ -3,7 +3,7 @@ import streamlit as st
 
 # Custom imports 
 from multipage import MultiPage
-from pages import about, games_analysis, network_analysis, player_performance_prediction, clustering # import your pages here
+from pages import about, network_analysis, player_performance_prediction, clustering # import your pages here
 
 # Create an instance of the app 
 app = MultiPage()
