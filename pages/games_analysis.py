@@ -144,11 +144,11 @@ def app():
   
   st.title('Play-by-Play + Substitution Analysis')
   st.markdown('''Using data provided by Sportradar – an organization that collects and analyzes sports data – we analyzed individual games on a
-                play-by-play basis.  Through significant data manipulation efforts, we detail basic scoring trends and lineup adjustments as well as
-                playing time for individual players.  The visualizations here are primarily informative, intended as objective, and should be viewed as
-                a standalone exploratory tool.  For the purposes of this app, we are limited to only a subset of teams and games due to the constraints 
-                imposed by file size limits.  We selected games for a handful of teams occurring on or after January 1st, 2022 which you can explore 
-                with the various dropdown menus.''')
+                play-by-play basis.  Through significant data manipulation efforts, we detail basic scoring trends and lineup adjustments for specific
+                games as well as playing time for individual players across a handful of games.  The visualizations here are primarily informative, 
+                intended as objective, and should be viewed as a standalone exploratory tool.  For the purposes of this app, we are limited to only a 
+                subset of teams and games due to the constraints imposed by file size limits.  We selected games for a handful of teams occurring on or 
+                after January 1st, 2022 which you can explore with the various dropdown menus.''')
   
   st.subheader('Preliminary Data Sample')
   st.markdown('''In order to provide some context regarding the underlying data used to facilitate the visualizations, we present a preliminary data 
@@ -158,6 +158,7 @@ def app():
   df_sample.drop(columns = ['Unnamed: 0'], inplace = True)
   st.dataframe(df_sample)
   
+  st.header('Game Synopsis')
   
   option_team = st.selectbox(
      'Please choose a team...',
@@ -308,9 +309,11 @@ def app():
              represents the 5-man unit that was used by the team (indicated on the x-axis) at different points in the game, where the length of each
              block corresponds to the time that the unit spent on the floor.  Each block is color coded for the cumulative score difference at the
              end of the unit's stint.  Placing your cursor over each block displays the names of the 5 players along with the plus/minus rating for
-             that unit, the cumulative score difference, and the time played, in minutes, for that unit.''')
+             that unit, the cumulative score difference, and the time played for that unit.''')
 
   team = team_pbp_df(option_team, 2022)
+  
+  st.header('Playing Time Breakdown')
 
   option_player = st.selectbox(
      'Please choose a player...',
@@ -351,7 +354,7 @@ def app():
   
   st.altair_chart(individual_player_chart)
   st.caption('''For the selected team, you can display the playing time of each player for all games in the game dropdown menu with disconnected bar
-               charts.  For each game, the presence of a bar represents the time that the selected player was in the game while the absence of a bar
-               represents the time that the selected player was on the bench.  Note that not all players play in every game – for this reason, some of
-               the games will have no bar.''')
+               charts.  For each game, the presence of a bar represents the segments of time that the selected player was in the game while the absence 
+               of a bar represents the segments of time that the selected player was on the bench.  Note that not all players play in every game – for 
+               this reason, some of the games will have no bar.''')
 
