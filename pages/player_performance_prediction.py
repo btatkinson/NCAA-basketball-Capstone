@@ -99,7 +99,6 @@ def app():
     * **Python libraries:** pandas, streamlit, numpy, altair, sklearn
     * **Data source:** [sportsdataverse-py](https://sportsdataverse-py.sportsdataverse.org/).
     """)
-    st.subheader("Team Dataframe")
     option_team = st.selectbox(
         'Please choose a team...',
         list(merged_predictions.team_short_display_name.unique())
