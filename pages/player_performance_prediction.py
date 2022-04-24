@@ -93,9 +93,10 @@ def display_prediction_graph(player_pred):#line= True, bars=True,head=True,logo=
 def app():
     st.title('Player Points Prediction')
     st.markdown("""
-    This app predicts how many points a player will score each game based on standard boxscore statistics such as minutes played, points, rebounds, and
-    assists as well as derivative features such as points per minute and rolling average point totals.  As with the play-by-play page, we are limited to 
-    a sample of teams due to the constraints imposed by file size limits.
+    Using data pulled from the ESPN API with the sportsdataverse package, this app predicts how many points a player will score each game based on 
+    standard boxscore statistics such as minutes played, points, rebounds, and assists as well as derivative features such as points per minute and 
+    rolling average point totals.  Training data samples were drawn from the 2019 through 2021 seasons while predictions were measured against samples
+    drawn from the 2022 season.  As with the play-by-play page, we are limited to  a sample of teams due to the constraints imposed by file size limits.
     * **Main Features:** Player Cumulative Average, Player Rolling Averages, Opponent Points Allowed to Role and Position. 
     * **Model Used:** Linear Regression Model
     * **Python libraries:** pandas, streamlit, numpy, altair, sklearn
