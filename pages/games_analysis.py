@@ -155,7 +155,7 @@ def app():
               sample.  Each row of the dataset represents an event within the game – a shot, a timeout, a foul, a substitution, and so on – with each
               field detailing in-game circumstances at the time of the event such as the score, the shot type and the outcome of the shot (if applicable),
               and the players on the court.  The specific game to which a set of events belongs is indicated by the _meta.id_ field.''')
-  df_sample.drop(columns = ['Unnamed: 0'], inplace = True)
+  #df_sample.drop(columns = ['Unnamed: 0'], inplace = True)
   st.dataframe(df_sample)
   
   st.header('Game Synopsis')
