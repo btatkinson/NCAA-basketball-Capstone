@@ -236,8 +236,8 @@ def app():
     by multiplying the past matrix by a decay rate as a function of time (for example, e^(-(1/600)*days_past)). Here, decaying past information isn't very useful because we don't use a
     prior and so all information is very helpful. 
 
-    Below, on one axis, we show the spearman correlation with end of year KenPom rankings. It finishes around 0.94 which implies a viable ranking system. 0.94
-    is impressive for a ranking system with no prior preseason knowledge (which KenPom incorporates). More rigorous comparisons on predictiveness can be done
+    Below, on one axis in purple, we show the spearman correlation with end of year KenPom rankings. It finishes around 0.94 which implies a viable ranking system. 0.94
+    is impressive with no prior preseason knowledge (which KenPom incorporates). More rigorous comparisons on predictiveness can be done
     in the future.  
     
     """)
@@ -247,12 +247,15 @@ def app():
 
     st.markdown("""
 
-    On the other side, we show another advantage of using an NxN matrix for calculating team strength. We can easily calculate [Shannon entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)). 
+    On the other side in green, we show another advantage of using an NxN matrix for calculating team strength. We can easily calculate [Shannon entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)). 
     Entropy can be thought of as the inverse of information. As more certainty and information is added, entropy decreases. A uniform matrix, similar to our
     prior, has extremely high entropy. That entropy decreases over the course of the season. Knowing our entropy level
-    would be very helpful in a Bayesian context because it would hint as to how much to weigh a prior. We can find the entropy levels for each team, which can aid an uncertainty calculation. 
-    It also can help determine the liklihood of an upset. Entropy increases at the start of conference play because conferences pit evenly matched opponents against each other. Therefore there are many more 
-    upsets. 
+    would be very helpful in a Bayesian context because it would hint as to how much to weigh a prior. We can find the entropy levels for each team, which can
+    help determine the liklihood of an upset (or unexpected result). You might notice that entropy increases in the middle of the season. We surmise that entropy 
+    increases at the start of conference play (12/2) because conferences pit evenly matched opponents against each other. On the other hand, before December 2nd,
+    there are a lot of non-conference games that are exhibition in nature. These sometimes involve very mismatched opponents. Therefore there are many more 
+    upsets. It would also be interesting to compare the entropy of different sports. Sports like baseball, where typical pre-game win probabilities are usually
+    40-60%, would probably be higher than a sport like college football, where pre-game win probababilities can be 90%+. 
     
     """)
 
