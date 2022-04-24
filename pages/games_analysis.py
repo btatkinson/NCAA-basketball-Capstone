@@ -140,3 +140,11 @@ def player_oncourt_season(pbp_df, school, playername):
 def app():
   
   st.title('Play-by-Play + Substitution Analysis')
+  st.markdown('''Using data provided by Sportradar – an organization that collects and analyzes sports data – we analyzed individual games on a
+                play-by-play basis.  For the purposes of this app, we are limited to only a subset of games due to the constraints imposed by file
+                size limits.  We selected games for a handful of teams occurring on or after January 1st, 2022 which you can explore with the various
+                dropdown menus.''')
+  
+  option_team = st.selectbox(
+     'Please choose a team...',
+     ['Michigan', 'Michigan State', 'Kentucky', 'Duke', 'Kansas', 'Gonzaga'])
