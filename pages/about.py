@@ -33,7 +33,7 @@ def app():
   opponent impacts, but could be used by players, coaches, scouting, and for betting purposes.''')
   
   st.markdown('''
-  Check out our GitHub repository for more: [NCAA Basketball Capstone](https://github.com/btatkinson/NCAA-basketball-Capstone)''')
+  **Check out our GitHub repository for more:** [NCAA Basketball Capstone](https://github.com/btatkinson/NCAA-basketball-Capstone)''')
   
   ########## STATEMENT OF WORK SECTION CODE ##########
   st.header('Statement of Work')
@@ -48,4 +48,16 @@ def app():
   st.markdown('''App Layout
   * **Medium Blog Post:** https://towardsdatascience.com/creating-multipage-applications-using-streamlit-efficiently-b58a58134030
   * **GitHub Repository:** https://github.com/prakharrathi25/data-storyteller.
+  ''')
+  st.markdown('''Data and Methodologies
+  * [Shael E. Brown | A PageRank Model for Player Performance Assessment in Basketball, Soccer and Hockey](https://www.semanticscholar.org/paper/A-PageRank-Model-for-Player-Performance-Assessment-Brown/788cbf39871a297db0afcb240f2b83ae4b5e4170)
+  * [Artem Volgin + Ekaterina Melianova | Network Approach to Basketball Analytics](https://www.kaggle.com/code/artvolgin/network-approach-to-basketball-analytics/notebook)
+  * [Ken Pomeroy | KenPom.com - National Efficiency](https://kenpom.com/blog/national-efficiency/)
+  * [Polina Rozenshtein | Temporal PageRank](https://link.springer.com/chapter/10.1007/978-3-319-46227-1_42)
+  * [Emanuele Rossi + Michael Bronstein | Deep learning on dynamic graphs](https://blog.twitter.com/engineering/en_us/topics/insights/2021/temporal-graph-networks)
+  * [Phil Roth | NBA Rotations](https://nbarotations.info/)
+  * [Sport Radar API | SportRadar.com](https://developer.sportradar.com/docs/read/Home)
+  * [ESPN.com](https://www.espn.com/)
+  * [NCAA BigQuery Dataset](https://console.cloud.google.com/marketplace/product/ncaa-bb-public/ncaa-basketball)
+  * [SportsReference.com](https://www.sports-reference.com/cbb/)
   ''')
