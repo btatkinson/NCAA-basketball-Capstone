@@ -46,8 +46,8 @@ def app():
   ########## REFERENCES SECTION CODE ##########
   st.header('References')
   st.markdown('''App Layout
-  * **Medium Blog Post:** https://towardsdatascience.com/creating-multipage-applications-using-streamlit-efficiently-b58a58134030
-  * **GitHub Repository:** https://github.com/prakharrathi25/data-storyteller.
+  * **Medium Blog Post:** [Creating MultiPage Applications Using Streamlit Efficiently](https://towardsdatascience.com/creating-multipage-applications-using-streamlit-efficiently-b58a58134030)
+  * **GitHub Repository:** [Data Storyteller](https://github.com/prakharrathi25/data-storyteller)
   ''')
   st.markdown('''Data and Methodologies
   * [Shael E. Brown | A PageRank Model for Player Performance Assessment in Basketball, Soccer and Hockey](https://www.semanticscholar.org/paper/A-PageRank-Model-for-Player-Performance-Assessment-Brown/788cbf39871a297db0afcb240f2b83ae4b5e4170)
