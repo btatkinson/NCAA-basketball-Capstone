@@ -7,10 +7,11 @@ def app():
   st.title('SIADS 697/698 Capstone Project')
   st.header('About')
   st.subheader('Team Members')
-  st.markdown('''* Blake Atkinson (btatkins@umich.edu)
+  st.markdown('''
+  * Blake Atkinson (btatkins@umich.edu)
   * Max Cohen (maxwc@umich.edu)
   * Zachary Kramer (zakramer@umich.edu)
-  *Matthew Zimolzak (zimolzak@umich.edu)''')
+  * Matthew Zimolzak (zimolzak@umich.edu)''')
   
   
   
