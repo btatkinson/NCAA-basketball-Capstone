@@ -323,8 +323,9 @@ def app():
       x='half_time'
   )
 
-  individual_player_chart = alt.layer(bars,text,text2,ticks, data=player_data).facet(spacing=4,row=alt.Row('label',sort=alt.EncodingSortField(field='meta_scheduled'),
-                                        header=alt.Header(title=None,labels=False))
+  individual_player_chart = alt.layer(bars,text,text2,ticks, data=individual_player_times).facet(
+                                      spacing=4,row=alt.Row('label',sort=alt.EncodingSortField(field='meta_scheduled'), 
+                                                            header=alt.Header(title=None,labels=False))
   ).configure_axis(grid=False).configure_view(strokeWidth=1)
   
   st.altair_chart(individual_player_chart)
