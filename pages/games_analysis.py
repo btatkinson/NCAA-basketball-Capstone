@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import altair as alt
 from collections import Counter
+from datetime import timedelta
 
 df = pd.read_csv('src/test_games.csv')
 
@@ -52,6 +53,14 @@ def team_pbp_df(school, season):
   combo = combo[combo['season'] == season]
 
   return combo
+
+def get_time_mm_ss(sec):
+      # create timedelta and convert it into string
+      td_str = str(timedelta(seconds=sec))
+
+      # split string into individual component
+      x = td_str.split(':')
+      return f"{x[-2]}:{x[-1]}"
 
 def player_oncourt_season(pbp_df, school, playername):
   player_cols = [i for i in pbp_df.columns if all(['team.player' in i, 'full_name' in i])]
@@ -107,16 +116,6 @@ def player_oncourt_season(pbp_df, school, playername):
 
   # format mp column for each game
   gs_merged['mp_decimal'] = gs_merged.groupby('meta_id')['player_on'].transform('sum')
-
-  from datetime import timedelta
-
-  def get_time_mm_ss(sec):
-      # create timedelta and convert it into string
-      td_str = str(timedelta(seconds=sec))
-
-      # split string into individual component
-      x = td_str.split(':')
-      return f"{x[-2]}:{x[-1]}"
 
   gs_merged['mp'] = gs_merged['mp_decimal'].apply(lambda x: get_time_mm_ss(x))
 
