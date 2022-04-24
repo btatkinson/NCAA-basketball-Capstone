@@ -17,7 +17,7 @@ def app():
   st.markdown('''
   Using on-court player data, we’ve created a new way to visualize and understand how team’s succeed and fail during a given game based on the lineups
   that are on the court. Our lineup visualization could be used in game box dashboards scores to attribute team success or failure to given lineups 
-  throughout a game. Additionally, we’ve created unique plots that will show a player’s playing time patterns throughout a season.'''
+  throughout a game. Additionally, we’ve created unique plots that will show a player’s playing time patterns throughout a season.''')
   
   st.subheader('Network Analysis')
   st.markdown('''
