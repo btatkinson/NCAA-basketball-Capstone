@@ -213,11 +213,48 @@ def app():
     st.markdown("""
     
     We noticed some shortcomings as we were experimenting with our version of opposing player networks. One, when a directed tie is created between opponents,
-    factors other than the opponents themselves can influence 
-    
+    factors other than the opponents themselves can have influence. Home court advantage, for instance, is not taken into account. Also, when creating a points
+    per minute or points per possession tie, team defense is a hidden variable. Hypothetically if J.D. Notae and Keegan Murray are equally talented scorers,
+    the method above will favor the player on the team with the better defense. Additionally, there is no temporal component yet, which is key for predicition
+    tasks as recent games are more predictive than games farther in the past. This is especially true in college basketball as a lot of the best players are 
+    freshmen who are quickly developing and hoping to leave after a single year to the NBA. 
     
     """)
 
+    st.markdown("### Temporal Component")
+
+    st.markdown("""
+
+    Temporal graph structures have seen a lot of progress recently. The idea of [temporal pagerank](https://link.springer.com/chapter/10.1007/978-3-319-46227-1_42)
+    was introduced soon after PageRank, for reasons similar that we are interested in it. Twitter research [also has done a lot recently](https://blog.twitter.com/engineering/en_us/topics/insights/2021/temporal-graph-networks)
+     in the field of deep graph networks with temporal components that scale well. It is not hard to imagine how a model that models social media interaction
+     between users could be applied to college basketball and college basketball actions. We would like to do experiements on those models if we are able to 
+     get lineup substitution information.
+
+    Here, as a proof of concept, we show off some of the advantages of PageRank. PageRank is simply NxN matrix multiplication with a vector of the length of the 
+    number of teams. Adding information, or game results, is as simple as matrix addition. Therefore all the operations are very quick and can scale well. We discount past information
+    by multiplying the past matrix by a decay rate as a function of time (for example, e^(-(1/600)*days_past)). Here, decaying past information isn't very useful because we don't use a
+    prior and so all information is very helpful. 
+
+    Below, on one axis, we show the spearman correlation with end of year KenPom rankings. It finishes around 0.94 which implies a viable ranking system. 0.94
+    is impressive for a ranking system with no prior preseason knowledge (which KenPom incorporates). More rigorous comparisons on predictiveness can be done
+    in the future.  
+    
+    """)
+
+    st.image("./src/network_viz_data/kenpom_entropy.gif")
+
+
+    st.markdown("""
+
+    On the other side, we show another advantage of using an NxN matrix for calculating team strength. We can easily calculate [Shannon entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)). 
+    Entropy can be thought of as the inverse of information. As more certainty and information is added, entropy decreases. A uniform matrix, similar to our
+    prior, has extremely high entropy. That entropy decreases over the course of the season. Knowing our entropy level
+    would be very helpful in a Bayesian context because it would hint as to how much to weigh a prior. We can find the entropy levels for each team, which can aid an uncertainty calculation. 
+    It also can help determine the liklihood of an upset. Entropy increases at the start of conference play because conferences pit evenly matched opponents against each other. Therefore there are many more 
+    upsets. 
+    
+    """)
 
 
     ### too big of file size
