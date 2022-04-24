@@ -309,7 +309,7 @@ def app():
              represents the 5-man unit that was used by the team (indicated on the x-axis) at different points in the game, where the length of each
              block corresponds to the time that the unit spent on the floor.  Each block is color coded for the cumulative score difference at the
              end of the unit's stint.  Placing your cursor over each block displays the names of the 5 players along with the plus/minus rating for
-             that unit, the cumulative score difference, and the time played, in minutes, for that unit.''')
+             that unit, the cumulative score difference, and the time played for that unit.''')
 
   team = team_pbp_df(option_team, 2022)
   
@@ -354,7 +354,7 @@ def app():
   
   st.altair_chart(individual_player_chart)
   st.caption('''For the selected team, you can display the playing time of each player for all games in the game dropdown menu with disconnected bar
-               charts.  For each game, the presence of a bar represents the time that the selected player was in the game while the absence of a bar
-               represents the time that the selected player was on the bench.  Note that not all players play in every game – for this reason, some of
-               the games will have no bar.''')
+               charts.  For each game, the presence of a bar represents the segments of time that the selected player was in the game while the absence 
+               of a bar represents the segments of time that the selected player was on the bench.  Note that not all players play in every game – for 
+               this reason, some of the games will have no bar.''')
 
