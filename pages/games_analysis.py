@@ -134,6 +134,8 @@ def player_oncourt_season(pbp_df, school, playername):
   cols_to_keep_viz = ['time','player_on','label','half_time','meta_scheduled','mp']
 
   gs_viz = gs_merged[cols_to_keep_viz]
+  
+  gs_viz['time'] = abs(2400 - gs_viz['time'])
 
   return gs_viz[gs_viz['label'].notna()]
 
