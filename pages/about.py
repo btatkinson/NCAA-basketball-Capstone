@@ -16,5 +16,8 @@ def app():
   st.markdown('Matthew statement of work.')
   
   ########## REFERENCES SECTION CODE ##########
-  st.header('References?')
-  st.markdown('List references here')
+  st.header('References')
+  st.markdown('''App Layout
+  * **Medium Blog Post:** https://towardsdatascience.com/creating-multipage-applications-using-streamlit-efficiently-b58a58134030
+  * **GitHub Repository:** https://github.com/prakharrathi25/data-storyteller.
+  ''')
