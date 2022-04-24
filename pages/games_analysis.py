@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import altair as alt
 from collections import Counter
+from datetime import timedelta
 
 df = pd.read_csv('src/test_games.csv')
 
@@ -108,16 +109,6 @@ def player_oncourt_season(pbp_df, school, playername):
   # format mp column for each game
   gs_merged['mp_decimal'] = gs_merged.groupby('meta_id')['player_on'].transform('sum')
 
-  from datetime import timedelta
-
-  def get_time_mm_ss(sec):
-      # create timedelta and convert it into string
-      td_str = str(timedelta(seconds=sec))
-
-      # split string into individual component
-      x = td_str.split(':')
-      return f"{x[-2]}:{x[-1]}"
-
   gs_merged['mp'] = gs_merged['mp_decimal'].apply(lambda x: get_time_mm_ss(x))
 
   # add for labeling purposes
@@ -138,6 +129,15 @@ def player_oncourt_season(pbp_df, school, playername):
   gs_viz['time'] = abs(2400 - gs_viz['time'])
 
   return gs_viz[gs_viz['label'].notna()]
+
+def get_time_mm_ss(sec):
+  # create timedelta and convert it into string
+  td_str = str(timedelta(seconds=sec))
+
+  # split string into individual component
+  x = td_str.split(':')
+  return f"{x[-2]}:{x[-1]}"
+
 
 def app():
   
@@ -212,8 +212,15 @@ def app():
   
   h_change['lineup_sorted'] = h_change['lineup'].apply(lambda x: ', '.join(sorted(x.split(', '))))
   
-  h_change['time_played'] = (h_change['to'] - h_change['from']) / 60
-  a_change['time_played'] = (a_change['to'] - a_change['from']) / 60
+  h_change['time_played'] = (h_change['to'] - h_change['from'])
+  a_change['time_played'] = (a_change['to'] - a_change['from'])
+  
+  h_change['time_played'] = h_change['time_played'].apply(lambda x: get_time_mm_ss(x))
+  a_change['time_played'] = a_change['time_played'].apply(lambda x: get_time_mm_ss(x))
+
+  # add for labeling purposes
+  h_change['time_played'] = h_change['time_played'] + ' minutes'
+  a_change['time_played'] = a_change['time_played'] + ' minutes'
   
   h_change['home_id'] = list(range(len(h_change)))
   h_change['time_old'] = abs(2400 - h_change['time'])
