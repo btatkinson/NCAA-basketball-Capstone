@@ -255,7 +255,10 @@ def app():
     increases at the start of conference play (12/2) because conferences pit evenly matched opponents against each other. On the other hand, before December 2nd,
     there are a lot of non-conference games that are exhibition in nature. These sometimes involve very mismatched opponents. Therefore there are many more 
     upsets. It would also be interesting to compare the entropy of different sports. Sports like baseball, where typical pre-game win probabilities are usually
-    40-60%, would probably be higher than a sport like college football, where pre-game win probababilities can be 90%+. 
+    40-60%, would probably be higher than a sport like college football, where pre-game win probababilities can be 90%+. Another observation is that entropy
+    tends to level off, which implies we learn about all we can given the frequency of college basketball games by the end of the season. That is to say,
+    if the teams kept playing for a few more months, we wouldn't be able to reduce our prediction error. 
+
     
     """)
 
