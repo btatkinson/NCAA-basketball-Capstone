@@ -289,3 +289,47 @@ def app():
              end of the unit's stint.  Placing your cursor over each block displays the names of the 5 players along with the plus/minus rating for
              that unit, the cumulative score difference, and the time played, in minutes, for that unit.''')
 
+  team = team_pbp_df(option_team, 2022)
+
+  option_player = st.selectbox(
+     'Please choose a player...',
+     team[(team['play.on_court.team.market'].isnull()) | (team['play.on_court.team.market'] == option_team)][['play.on_court.team.player1.full_name', \
+     'play.on_court.team.player2.full_name','play.on_court.team.player3.full_name', 'play.on_court.team.player4.full_name', \
+     'play.on_court.team.player5.full_name']].melt().value.unique())
+
+  individual_player_times = player_oncourt_season(team, option_team, option_player)
+  
+  ### VISUALIZE
+
+  # this isn't behaving the way i want, but is used to label halftime
+  axis_labels = (
+      "datum.time == 1 ? 'Half' : datum.time == 1200 ? 'Half' : 'Half'"
+  )
+
+  bars = alt.Chart().mark_bar(width=1).encode(
+      x=alt.X('time',axis=alt.Axis(values=[1200],labelExpr=axis_labels, title = ''),scale=alt.Scale(domainMax=2400,domainMin=0,clamp=True,padding=0)),
+      y=alt.Y('player_on',axis=None)
+  ).properties(width=500,height=20)
+
+  text = alt.Chart().mark_text(align='right',baseline='middle',dx=-260).encode(
+      text='label'
+  )
+
+  text2 = alt.Chart().mark_text(align='left',baseline='middle',dx=260).encode(
+      text='mp'
+  )
+
+  ticks = alt.Chart().mark_rule(color='white',strokeDash=[1,1],size=2).encode(
+      x='half_time'
+  )
+
+  individual_player_chart = alt.layer(bars,text,text2,ticks, data=player_data).facet(spacing=4,row=alt.Row('label',sort=alt.EncodingSortField(field='meta_scheduled'),
+                                        header=alt.Header(title=None,labels=False))
+  ).configure_axis(grid=False).configure_view(strokeWidth=1)
+  
+  st.altair_chart(individual_player_chart)
+  st.caption('''For the selected team, you can display the playing time of each player for all games in the game dropdown menu with disconnected bar
+               charts.  For each game, the presence of a bar represents the time that the selected player was in the game while the absence of a bar
+               represents the time that the selected player was on the bench.  Note that not all players play in every game – for this reason, the
+               number of games displayed can vary from player to player.''')
+
