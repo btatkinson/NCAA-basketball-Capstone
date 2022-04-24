@@ -106,7 +106,7 @@ def app():
     )
     ### Filter on team, player, 
     team_predictions = merged_predictions[merged_predictions.team_short_display_name==option_team]
-    st.write(team_predictions) 
+#     st.write(team_predictions) 
     # player = "Ochai Agbaji"
     st.subheader("Player Dataframe")
     option_player = st.selectbox(
