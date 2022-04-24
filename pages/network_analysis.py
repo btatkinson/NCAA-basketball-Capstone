@@ -21,12 +21,14 @@ def app():
     Our primary motivation for applying network analysis to college basketball is that network data structures are able to cleanly express the pairwise nature a basketball
     game. For example, when one team plays another team, the result of that game should update the representation or state of both teams simultaneously. Winning a game, for example, 
     is always at the expense of another team. This has been tried in a few 
-    places before, namely (citation 1), (citation 2). Viewing teams as nodes and games as edges allows some traditional network metrics to naturally have interpretable meaning.
+    places before in different ways. An excellent exploration of these networks won a [Kaggle analytics competition in 2020](https://www.kaggle.com/code/artvolgin/network-approach-to-basketball-analytics/notebook).
+    Although the ideas have been explored before, there hasn't been much work in sythesizing the methods or making them publicly available. 
+    Viewing teams as nodes and games as edges allows some traditional network metrics to naturally have interpretable meaning.
     We will elaborate below on how PageRank, as an example, can easily be used to analyze certain qualities of a team. Another way to view basketball through the lens of networks 
     is to view the players as nodes and actions with the basketball as an edge. Passes to a teammate, turnovers to an opponent, or even shooting the basketball (to a 
-    special basket node) is also naturally a network. (citation 3) Centrality measures can then be used to determine how essential players are to their team's network. Unfortunately,
+    [special basket node](https://www.semanticscholar.org/paper/A-PageRank-Model-for-Player-Performance-Assessment-Brown/788cbf39871a297db0afcb240f2b83ae4b5e4170)) is also naturally a network. Centrality measures can then be used to determine how essential players are to their team's network. Unfortunately,
      the primary source of data for knowing what players are on the court together at the same time comes from the NCAA, and they do not allow scraping of their website. 
-     Resultingly, we had to limit our analysis of player networks. (citation 4)
+     Resultingly, we had to limit our analysis of player networks. 
 
     """)
 
@@ -204,6 +206,17 @@ def app():
     """)
 
     st.image("./src/network_viz_data/player_principal_components.png")
+
+
+    st.markdown("### Improving the Concept")
+
+    st.markdown("""
+    
+    We noticed some shortcomings as we were experimenting with our version of opposing player networks. One, when a directed tie is created between opponents,
+    factors other than the opponents themselves can influence 
+    
+    
+    """)
 
 
 
